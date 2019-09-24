@@ -1,4 +1,13 @@
-function tabAction(key) {}
+function resetAll() {
+  let inputFields = document.getElementsByTagName(`input`)
+  for (let i = 0; i < inputFields.length; i++) {
+    if (inputFields[i].value == `Enroll!`) {
+      //Do Nothing
+    } else {
+      inputFields[i].value = ''
+    }
+  }
+}
 
 //General function for creating a label
 function createLabel(labelValue) {
@@ -115,19 +124,43 @@ function validateAddress() {
 
 //Upon button clicking/ this is enrollment
 let mainEle = document.getElementById('mainForm1')
-function loading() {
-  let btnEle = document.getElementById('submit')
-  // mainEle.setAttribute('class', 'gif')
-  mainEle.setAttribute(`class`, `mainShrink`)
+let btnEle = document.getElementById('submit')
+btnEle.onclick = function(e) {
+  resetAll()
+}
+
+btnEle.onkeydown = function(keyEvent) {
+  if (keyEvent.keyCode === 13) {
+    alert(`You thought its that simple! XD`)
+    let range = prompt(`Enter a number`)
+    let numOdd = countOdd(range)
+    let numEven = countEven(range)
+    let question1 = prompt(`enter number of odd numbers between 1 to ` + range)
+    if (numOdd === parseInt(question1)) {
+      let question2 = prompt(
+        `enter number of even numbers between 1 to ` + range
+      )
+      if (numEven === parseInt(question2)) {
+        window.location.replace(`redirect.html`)
+      } else {
+        alert(`this one was wrong! lets do elementary again`)
+        resetAll()
+        return false
+      }
+    } else {
+      alert(
+        `I thought people of this ` + ageEle.value + `had mathematics knowledge`
+      )
+      resetAll()
+      return false
+    }
+  }
 }
 
 //Radio button validation and Iteration
 let mentorEle = document.getElementsByName('btn')
-console.log(mentorEle.length)
 for (let i = 0; i < mentorEle.length; i++) {
-  console.log(mentorEle[i])
   mentorEle[i].addEventListener('click', () => {
-    console.log(event.target)
     let decision = confirm('You actually need a mentor?')
     if (decision) {
       let decisionNestIf = confirm(
@@ -173,8 +206,6 @@ function validateDOB() {
   if (dateRegex.test(date)) {
     let dateString = date.split(`/`)
     if (validateReverse(dateString[1])) {
-      console.log(dateString)
-      console.log(`matched`)
       alert(`Dude you got it right the first time!`)
     } else {
       alert(`Seriously? Dates are taught in elementary!`)
@@ -194,4 +225,24 @@ function validateDOB() {
     dobEle.focus()
     return false
   }
+}
+
+function countOdd(range) {
+  let count = 0
+  for (let i = 0; i <= range; i++) {
+    if (!(i % 2 === 0)) {
+      count++
+    }
+  }
+  return count
+}
+
+function countEven(range) {
+  let count = 0
+  for (let i = 1; i <= range; i++) {
+    if (i % 2 === 0) {
+      count++
+    }
+  }
+  return count
 }
