@@ -7,6 +7,7 @@ let currSpec = parseInt(boxNative.style.height) //one variable since its a squar
 let clickIt = function() {
   let temp = parseInt(boxNative.style.height) //to store the current height and width
   let finalheight = currSpec * 2
+
   //Closure to enable recursion call (Inspired from good parts)
   var move = function() {
     if (temp != finalheight) {

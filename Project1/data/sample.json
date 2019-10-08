@@ -1,0 +1,29 @@
+{
+  "cities": {
+    "Arabic": {
+      "ancient": "Middle East Studies",
+      "new": "RIT Dubai",
+      "question": "ancient or new?"
+    },
+    "Spanish": {
+      "humanities": "Barcelona",
+      "science": "Santiago",
+      "question": "humanities or science"
+    },
+    "question": "Arabic or spanish"
+  },
+  "nature": {
+    "mountains": {
+      "south_america": "Semester in cusco",
+      "asia": "Big cats of Himalayas",
+      "question": "SA or asia?"
+    },
+    "islands": {
+      "carriabean": "Marine resorce studies",
+      "southPacific": "Protecting the phoenix islands",
+      "question": "carribean or south pacific"
+    },
+    "question": "Mountains or islands"
+  },
+  "question": "cities or nature"
+}

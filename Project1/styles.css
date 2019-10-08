@@ -1,0 +1,19 @@
+/* .question {
+} */
+
+.questiondiv {
+  max-width: 400px;
+  width: 100%;
+  background: white;
+  margin: auto;
+  margin-top: 7vh;
+  display: flex;
+  flex-direction: row;
+  padding: 15px 25px;
+  border: solid;
+  border-radius: 27px;
+}
+
+.selectStyle {
+  float: right;
+}
