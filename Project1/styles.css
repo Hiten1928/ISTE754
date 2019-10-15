@@ -1,19 +1,122 @@
 /* .question {
 } */
 
-.questiondiv {
-  max-width: 400px;
-  width: 100%;
-  background: white;
-  margin: auto;
-  margin-top: 7vh;
-  display: flex;
-  flex-direction: row;
-  padding: 15px 25px;
-  border: solid;
-  border-radius: 27px;
+body {
+  background-image: url('images/email-pattern.png');
+}
+.cover {
+  background-image: url('images/outdoor2.jpg');
+  min-height: 400px;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
-.selectStyle {
+.information {
+  border: black;
+}
+
+.jumbotron {
+  position: relative;
+  background-image: linear-gradient(
+    to right,
+    #051937,
+    #2b2759,
+    #5e2e75,
+    #972d84,
+    #d12486
+  );
+  color: antiquewhite;
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.5em;
+  /* transition: all 0.75s ease; */
+  animation-duration: 5s;
+}
+
+header {
+  flex: 1 100%;
+  text-align: center;
+  width: 100%;
+  height: auto;
+  background-image: linear-gradient(
+    to right top,
+    #6d1bd8,
+    #df00a3,
+    #ff0069,
+    #ff6035,
+    #ffa400,
+    #dec300,
+    #b5de32,
+    #7ef46b,
+    #4af398,
+    #00efbc,
+    #00e8d7,
+    #43e0e7
+  );
+  position: relative;
+
+  border-radius: 0 0 85% 85% / 0%;
+  font-weight: normal;
+  font-size: 3em;
+  color: black;
+  font-family: 'Josefin Sans', sans-serif;
+  background-attachment: fixed;
+}
+
+.panel {
+  line-height: 2;
+  font-family: 'Indie Flower', cursive;
+  font-size: 2em;
+}
+
+.information {
+  margin: 0 auto;
+}
+.logo {
+  width: 55px;
+  float: left;
+  margin: 0.5% 0.5%;
+}
+
+.logo2 {
+  width: 55px;
   float: right;
+  margin: 0.5% 0.5%;
+}
+
+@keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    transform: translatY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fadeInDown {
+  -webkit-animation-name: fadeInDown;
+  animation-name: fadeInDown;
+}
+
+.container1 {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  padding-top: 5%;
+}
+
+.item {
+  align-self: auto;
+  font-family: 'Indie Flower', cursive;
+  font-size: 1.5em;
+}
+
+.jumbo-class {
+  width: 400px;
 }

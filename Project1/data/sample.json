@@ -1,29 +1,53 @@
 {
-  "cities": {
+  "Cities": {
     "Arabic": {
-      "ancient": "Middle East Studies",
-      "new": "RIT Dubai",
-      "question": "ancient or new?"
+      "Ancient": {
+        "text": "Middle East Studies",
+        "link": "https://rit-horizons.symplicity.com/index.php?s=programs&mode=form&id=0f30e6c7e993fafeda90e8dde9b83467"
+      },
+      "New": {
+        "text": "Directly Enrolled in RIT Dubai",
+        "link": "https://rit-horizons.symplicity.com/index.php?s=programs&mode=form&id=0e062b2cfb65db2f6778cd26aad9311d"
+      },
+      "question": "An ancient city or a new?"
     },
     "Spanish": {
-      "humanities": "Barcelona",
-      "science": "Santiago",
-      "question": "humanities or science"
+      "Humanities": {
+        "text": "Advanced Liberal Arts - Barcelona",
+        "link": "https://rit-horizons.symplicity.com/index.php?s=programs&mode=form&id=41f6e58309aa015c141ac3b4f4f03b50"
+      },
+      "Science": {
+        "text": "Santiago - Health Studies",
+        "link": "https://rit-horizons.symplicity.com/index.php?s=programs&mode=form&id=89894ba735af3935a4611a2205fff648"
+      },
+      "question": "What is your course preference?"
     },
-    "question": "Arabic or spanish"
+    "question": "Which language do you prefer?"
   },
-  "nature": {
-    "mountains": {
-      "south_america": "Semester in cusco",
-      "asia": "Big cats of Himalayas",
-      "question": "SA or asia?"
+  "Nature": {
+    "Mountains": {
+      "South America": {
+        "text": "Universidad San Ignacio Loyola - Cusco",
+        "link": "https://rit-horizons.symplicity.com/index.php?s=programs&mode=form&id=ae8939c42459a2b58f247a8e2cff284b"
+      },
+      "Asia": {
+        "text": "Tracking & Conversation: Big Cats of Himalayas",
+        "link": "https://rit-horizons.symplicity.com/index.php?s=programs&mode=form&id=ddbf516c2873f7087f3d631ca7f239a2"
+      },
+      "question": "What would be the continent of your choice?"
     },
-    "islands": {
-      "carriabean": "Marine resorce studies",
-      "southPacific": "Protecting the phoenix islands",
-      "question": "carribean or south pacific"
+    "Islands": {
+      "Carriabean": {
+        "text": "Studies on Marine Resources",
+        "link": "https://rit-horizons.symplicity.com/index.php?s=programs&mode=form&id=e66910d6fcad2576bea3f4a4dcef3897"
+      },
+      "South Pacific": {
+        "text": "Protecting the Phoenix Islands",
+        "link": "https://rit-horizons.symplicity.com/index.php?s=programs&mode=form&id=1008cf2cf5051059f9138d0787a23388"
+      },
+      "question": "Well then! Its islands, but which one?"
     },
-    "question": "Mountains or islands"
+    "question": "Would prefer to hike the mountains or By the Sea?"
   },
-  "question": "cities or nature"
+  "question": "Where do you like to spend time? Cities or Nature"
 }
