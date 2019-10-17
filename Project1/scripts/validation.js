@@ -5,18 +5,17 @@
 function validateName() {
   let nameEle = document.getElementById('name')
   let value = nameEle.value
-  let divEle = document.createElement('div')
-  let strongEle = document.createElement('strong')
-  divEle.appendChild(strongEle)
-  divEle.textContent = 'Invalid format'
-  divEle.className =
-    //   let regex = new RegExp(`[a-zA-Z]`)
-    console.log(parseInt(value))
+  let divEle = document.createTextNode('Name field cannot be empty or a number')
+  let pEle = document.createElement('p')
+  pEle.appendChild(divEle)
+  pEle.className = 'error'
+  console.log(value)
   if (parseInt(value)) {
-    nameEle.parentElement.firstElementChild = divEle
+    nameEle.parentNode.appendChild(pEle)
     nameEle.value = ''
     nameEle.focus()
   } else {
+    localStorage.setItem('name', value)
     console.log('do nothing')
   }
   cookies.setCookie('name', nameEle.value)
@@ -28,6 +27,7 @@ function validateAge() {
   console.log('age', valueAge)
   console.log(typeof valueAge)
   if (parseInt(valueAge) && parseInt(valueAge) < 100) {
+    localStorage.setItem('age', valueAge)
     console.log('Age is correct')
   } else {
     console.log('in else')
@@ -52,6 +52,7 @@ function validatePhone() {
   let regex = new RegExp('[0-9]{10}')
   console.log(regex.test(valuePhone))
   if (regex.test(valuePhone)) {
+    localStorage.setItem('phone', valuePhone)
     console.log('Phone in correct format')
   } else {
     phoneEle.parentElement.firstElementChild = divEle
