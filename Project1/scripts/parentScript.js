@@ -55,7 +55,6 @@ var getNestedObject = function getNestedObject(path) {
 }
 
 var remove = function remove(pathList) {
-  console.log(pathList)
   var allEle = document.querySelectorAll('label')
   var dataDivEle = document.getElementById('dataDiv')
 

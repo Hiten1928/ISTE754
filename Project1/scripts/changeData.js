@@ -2,12 +2,9 @@
 
 var changeData = function changeData() {
   if (ajaxURL == 'data/sample.json') {
-    console.log(mainDivEle, mainDivEle.firstElementChild)
-
     for (var i = 0; i < mainDivEle.childNodes.length; i++) {
       while (mainDivEle.lastElementChild) {
         mainDivEle.removeChild(mainDivEle.lastElementChild)
-
         if (document.getElementById('dataDiv')) {
           document
             .getElementById('dataDiv')

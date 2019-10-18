@@ -26,6 +26,20 @@ var displayResults = function displayResults(finalChoice) {
   } else {
     displayText =
       displayText + 'Hi, please complete the form for viewing the college'
+    for (var _j = 1; _j < mainDivEle.childNodes.length; _j++) {
+      while (mainDivEle.lastElementChild) {
+        mainDivEle.removeChild(mainDivEle.lastElementChild)
+        if (document.getElementById('dataDiv')) {
+          document
+            .getElementById('dataDiv')
+            .parentNode.removeChild(document.getElementById('dataDiv'))
+        }
+      }
+    }
+    console.log(ajaxURL)
+    path = ''
+    loadJson(ajaxURL, callback)
+    document.getElementById('name').focus()
   }
 
   nodeLabelEle.textContent = displayText
