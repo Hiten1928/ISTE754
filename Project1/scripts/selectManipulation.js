@@ -1,3 +1,5 @@
+'use strict'
+
 var createDropdown = function createDropdown(dataObj) {
   var keyArray = Object.keys(dataObj) //If there is no question then it means we reached the final answer
 
@@ -53,6 +55,7 @@ var addNewEventListener = function addNewEventListener(ele) {
         path = _pathArray.join('.') //data of that choice
 
         var newData = getNestedObject(path) //removing the elements that are not present after the change in the path variable
+
         console.log(path)
         console.log(_pathArray)
         remove(_pathArray) //create the elements from the inner object data

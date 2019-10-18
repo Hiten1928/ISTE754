@@ -3,10 +3,10 @@
 var data
 var obj = new XMLHttpRequest()
 var path = '' //variable to store the path with every choice
+
 var dataType
 var ajaxURL = 'data/sample.json'
 var changeDataType = false
-
 var mainDivEle = document.getElementById('password') //the root element in the DOM structure
 
 var resultDivEle = document.getElementsByClassName('panelWrapper')
@@ -62,6 +62,7 @@ var remove = function remove(pathList) {
   if (allEle.length >= pathList.length) {
     console.log('pathList', pathList.length)
     console.log('allEle', allEle)
+
     for (var i = pathList.length + 1; i < allEle.length; i++) {
       allEle[i].remove()
       dataDivEle !== null ? dataDivEle.remove() : console.log('nothing bro')
@@ -78,12 +79,12 @@ function createWin() {
     'myWin',
     'height=300,width=300,screenX=350,screenY=50'
   )
-  newWin.document.write(`<h1 id='coolBeans' style='position:absolute;left:2px;'>
-  Incompatble Browser, please switch to Chrome, Safari, Edge or IE11
-  </h1>`)
+  newWin.document.write(
+    "<h1 id='coolBeans' style='position:absolute;left:2px;'>\n  Incompatble Browser, please switch to Chrome, Safari, Edge or IE11\n  </h1>"
+  )
 }
 
-var checkBrowser = function() {
+var checkBrowser = function checkBrowser() {
   if (BrowserDetect.browser == 'Explorer') {
     var html = document.getElementsByTagName('html')[0]
     var body = document.getElementById('body')

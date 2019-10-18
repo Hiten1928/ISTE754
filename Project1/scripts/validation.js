@@ -1,15 +1,32 @@
-// console.log(nameEle)
-// console.log(phoneEle)
-// console.log(ageEle)
+'use strict'
+
+function _typeof(obj) {
+  if (typeof Symbol === 'function' && typeof Symbol.iterator === 'symbol') {
+    _typeof = function _typeof(obj) {
+      return typeof obj
+    }
+  } else {
+    _typeof = function _typeof(obj) {
+      return obj &&
+        typeof Symbol === 'function' &&
+        obj.constructor === Symbol &&
+        obj !== Symbol.prototype
+        ? 'symbol'
+        : typeof obj
+    }
+  }
+  return _typeof(obj)
+}
 
 function validateName() {
-  let nameEle = document.getElementById('name')
-  let value = nameEle.value
-  let divEle = document.createTextNode('Name field cannot be empty or a number')
-  let pEle = document.createElement('p')
+  var nameEle = document.getElementById('name')
+  var value = nameEle.value
+  var divEle = document.createTextNode('Name field cannot be empty or a number')
+  var pEle = document.createElement('p')
   pEle.appendChild(divEle)
   pEle.className = 'error'
   console.log(value)
+
   if (parseInt(value)) {
     nameEle.parentNode.appendChild(pEle)
     nameEle.value = ''
@@ -22,17 +39,18 @@ function validateName() {
 }
 
 function validateAge() {
-  let ageEle = document.getElementById('age')
-  let valueAge = ageEle.value
+  var ageEle = document.getElementById('age')
+  var valueAge = ageEle.value
   console.log('age', valueAge)
-  console.log(typeof valueAge)
+  console.log(_typeof(valueAge))
+
   if (parseInt(valueAge) && parseInt(valueAge) < 100) {
     localStorage.setItem('age', valueAge)
     console.log('Age is correct')
   } else {
     console.log('in else')
-    let divEle = document.createElement('div')
-    let strongEle = document.createElement('strong')
+    var divEle = document.createElement('div')
+    var strongEle = document.createElement('strong')
     divEle.appendChild(strongEle)
     divEle.textContent = 'Invalid format! Please Enter numbers'
     ageEle.value = ''
@@ -42,15 +60,15 @@ function validateAge() {
 }
 
 function validatePhone() {
-  let phoneEle = document.getElementById('phone')
-  let valuePhone = phoneEle.value
-  let divEle = document.createElement('div')
-  let strongEle = document.createElement('strong')
+  var phoneEle = document.getElementById('phone')
+  var valuePhone = phoneEle.value
+  var divEle = document.createElement('div')
+  var strongEle = document.createElement('strong')
   divEle.appendChild(strongEle)
   divEle.textContent = 'Invalid format'
-
-  let regex = new RegExp('[0-9]{10}')
+  var regex = new RegExp('[0-9]{10}')
   console.log(regex.test(valuePhone))
+
   if (regex.test(valuePhone)) {
     localStorage.setItem('phone', valuePhone)
     console.log('Phone in correct format')
