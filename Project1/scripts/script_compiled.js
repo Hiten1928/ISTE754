@@ -54,75 +54,41 @@ var getNestedObject = function getNestedObject(path) {
   return temp
 }
 
-var createDropdown = function createDropdown(dataObj) {
-  var keyArray = Object.keys(dataObj) //If there is no question then it means we reached the final answer
-
-  if (keyArray.indexOf('question') == -1) {
-    var finalDiv = displayResults(dataObj)
-  } else {
-    //set css for the div of the question
-    var divEle = document.createElement('div')
-    divEle.className = ' form-group fadeInDown' //Set the content for the label
-
-    var labelEle = document.createElement('label')
-    labelEle.className = 'control-label'
-    labelEle.textContent = dataObj['question'] //set the select-option
-
-    var selectEle = document.createElement('select')
-    selectEle.className = 'form-control input-width'
-    selectEle.options[0] = new Option('Select Preference')
-    selectEle.options[0].disabled = true //Populate the drop downs
-
-    for (var i = 0; i < keyArray.length - 1; i++) {
-      selectEle.options[i + 1] = new Option(keyArray[i])
-    }
-
-    labelEle.appendChild(selectEle)
-    divEle.appendChild(labelEle)
-    divEle.setAttribute('id', divCount) //event listener on the select element
-
-    addNewEventListener(selectEle) //Append the select to the DOM element
-
-    mainDivEle.appendChild(divEle)
-  }
-}
-
 var remove = function remove(pathList) {
   console.log(pathList)
   var allEle = document.querySelectorAll('label')
   var dataDivEle = document.getElementById('dataDiv')
 
   if (allEle.length >= pathList.length) {
-    for (var i = pathList.length; i < allEle.length; i++) {
+    console.log('pathList', pathList.length)
+    console.log('allEle', allEle)
+    for (var i = pathList.length + 1; i < allEle.length; i++) {
       allEle[i].remove()
       dataDivEle !== null ? dataDivEle.remove() : console.log('nothing bro')
     }
   }
 }
 
-var displayResults = function displayResults(finalChoice) {
-  console.log(finalChoice)
-  var aEle = document.createElement('a')
-  var nodeEle = document.createElement('div')
-  var nodeLabelEle = document.createElement('label')
-  nodeEle.id = 'dataDiv' //Add DHTML class with fadeInDown
-
-  nodeEle.className = 'jumbotron fadeInDown'
-  nodeLabelEle.textContent = finalChoice.text
-  aEle.href = finalChoice.link
-  aEle.target = '_blank'
-
-  nodeEle.appendChild(nodeLabelEle)
-  aEle.appendChild(nodeEle)
-  resultDivEle[0].appendChild(aEle)
+function createWin() {
+  // url
+  // name for the window
+  // config for the window
+  newWin = window.open(
+    '',
+    'myWin',
+    'height=300,width=300,screenX=350,screenY=50'
+  )
+  newWin.document.write(`<h1 id='coolBeans' style='position:absolute;left:2px;'>
+  Incompatble Browser, please switch to Chrome, Safari, Edge or IE11
+  </h1>`)
 }
 
 var checkBrowser = function() {
   if (BrowserDetect.browser == 'Explorer') {
-    alert('Incompatible browser - switch to Chrome, Firefox or Safari')
     var html = document.getElementsByTagName('html')[0]
     var body = document.getElementById('body')
     html.removeChild(body)
+    createWin()
   }
 }
 

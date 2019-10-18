@@ -6,7 +6,7 @@ var createDropdown = function createDropdown(dataObj) {
   } else {
     //set css for the div of the question
     var divEle = document.createElement('div')
-    divEle.className = ' form-group fadeInDown' //Set the content for the label
+    divEle.className = 'form-group select_dropdown' //Set the content for the label
 
     var labelEle = document.createElement('label')
     labelEle.className = 'control-label'
@@ -53,7 +53,8 @@ var addNewEventListener = function addNewEventListener(ele) {
         path = _pathArray.join('.') //data of that choice
 
         var newData = getNestedObject(path) //removing the elements that are not present after the change in the path variable
-
+        console.log(path)
+        console.log(_pathArray)
         remove(_pathArray) //create the elements from the inner object data
 
         createDropdown(newData)

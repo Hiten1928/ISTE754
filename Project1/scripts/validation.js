@@ -14,11 +14,11 @@ function validateName() {
     nameEle.parentNode.appendChild(pEle)
     nameEle.value = ''
     nameEle.focus()
+    return false
   } else {
     localStorage.setItem('name', value)
     console.log('do nothing')
   }
-  cookies.setCookie('name', nameEle.value)
 }
 
 function validateAge() {
@@ -37,8 +37,8 @@ function validateAge() {
     divEle.textContent = 'Invalid format! Please Enter numbers'
     ageEle.value = ''
     ageEle.focus()
+    return false
   }
-  return false
 }
 
 function validatePhone() {
@@ -58,5 +58,6 @@ function validatePhone() {
     phoneEle.parentElement.firstElementChild = divEle
     phoneEle.value = ''
     phoneEle.focus()
+    return false
   }
 }

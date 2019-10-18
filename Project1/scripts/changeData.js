@@ -4,6 +4,11 @@ var changeData = function() {
     for (let i = 0; i < mainDivEle.childNodes.length; i++) {
       while (mainDivEle.lastElementChild) {
         mainDivEle.removeChild(mainDivEle.lastElementChild)
+        if (document.getElementById('dataDiv')) {
+          document
+            .getElementById('dataDiv')
+            .parentNode.removeChild(document.getElementById('dataDiv'))
+        }
       }
     }
     ajaxURL = 'data/custom.json'
@@ -13,6 +18,11 @@ var changeData = function() {
     for (let i = 1; i < mainDivEle.childNodes.length; i++) {
       while (mainDivEle.lastElementChild) {
         mainDivEle.removeChild(mainDivEle.lastElementChild)
+        if (document.getElementById('dataDiv')) {
+          document
+            .getElementById('dataDiv')
+            .parentNode.removeChild(document.getElementById('dataDiv'))
+        }
       }
     }
     ajaxURL = 'data/sample.json'

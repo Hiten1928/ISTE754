@@ -22,43 +22,40 @@
   <header class="header">
     <img class="logo" src="images/logo.jpg">
     <a> RIT Study Abroad Program</a>
+    <!-- <div class="form-group">
+      <div class="phone"> -->
     <img class="logo2" src="images/logo.jpg">
-    <div class="inHeader"></div>
-  </header>
-  <div class="cover"></div>
-  <header class="header">
+    <button onclick="changeData()" type="button" class="btn btn-dark data">Switch Data</button>
+    <!-- </div>
+    </div> -->
 
     <div class="inHeader"></div>
   </header>
-  <div class="panelWrapper container1">
-    <div class="panel item">
+  <div class="cover"></div>
+  <div class="panelWrapper container1" id='first'>
+    <div class="panel item" id='second'>
       <div class="jumbo-class" id="wrapper">
         <form class="form" action="">
           <div class="information">
             <div class="form-group">
               <span class="control-label" for="name">Name:</span>
               <div class="form-group">
-                <input class="form-control" id="name" placeholder="Enter Name" name="name" onchange="validateName()"
-                  required>
+                <input class="form-control" id="name" placeholder="Enter Name" name="name"
+                  onchange="return validateName()" required>
               </div>
             </div>
             <div class="form-group">
               <span class="control-label" for="age">Age:</span>
               <div class="">
-                <input class="form-control" id="age" placeholder="Enter Age" name="age" onchange="validateAge()"
+                <input class="form-control" id="age" placeholder="Enter Age" name="age" onchange="return validateAge()"
                   required>
               </div>
             </div>
             <div class="form-group">
               <span class="control-label" for="phone">Phone:</span>
               <div class="phone">
-                <input class="form-control" id="phone" placeholder="0123456789" name="phone" onchange="validatePhone()"
-                  required>
-              </div>
-            </div>
-            <div class="form-group">
-              <div class="phone">
-                <button onclick="changeData()" type="button" class="btn btn-dark">Change Questionnaire</button>
+                <input class="form-control" id="phone" placeholder="0123456789" name="phone"
+                  onchange="return validatePhone()" required>
               </div>
             </div>
           </div>
@@ -76,10 +73,13 @@
 
 </body>
 <script src="scripts/browserDetect.js"></script>
-<script src="scripts/script_compiled.js"></script>
 <script src="scripts/cookies.js"></script>
 <script src="scripts/validation.js"></script>
 <script src="scripts/changeData.js"></script>
 <script src="scripts/selectManipulation.js"></script>
+<script src="scripts/script_compiled.js"></script>
+<script src="scripts/displayCollege.js"></script>
+<script src="scripts/recentVisited.js"></script>
+
 
 </html>
