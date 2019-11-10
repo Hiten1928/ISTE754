@@ -28,8 +28,15 @@
         "link": "https://rit-horizons.symplicity.com/index.php?s=programs&mode=form&id=12f12c51021144548086e7619ab138e9"
       },
       "Italian": {
-        "text": "Architecture & Urbanism of the Italian Renaissance",
-        "link": "https://rit-horizons.symplicity.com/index.php?s=programs&mode=form&id=02062b4e59a4226d534fecdda08c6369"
+        "Hard of Hearing": {
+          "text": "Deaf Studies",
+          "link": "https://rit-horizons.symplicity.com/index.php?s=programs&mode=form&id=aa25136a53221cb42ae15a94bb466bfe"
+        },
+        "Communcation comfortable": {
+          "text": "Architecture & Urbanism of the Italian Renaissance",
+          "link": "https://rit-horizons.symplicity.com/index.php?s=programs&mode=form&id=02062b4e59a4226d534fecdda08c6369"
+        },
+        "question": "How is your communication comfort level?"
       },
       "question": "Which Architectural preference you have?"
     },

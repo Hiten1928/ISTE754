@@ -61,7 +61,7 @@ function createWin() {
   // url
   // name for the window
   // config for the window
-  newWin = window.open(
+  var newWin = window.open(
     '',
     'myWin',
     'height=300,width=300,screenX=350,screenY=50'
@@ -77,7 +77,6 @@ var checkBrowser = function checkBrowser() {
     var html = document.getElementsByTagName('html')[0]
     var body = document.getElementById('body')
     html.removeChild(body)
-    createWin()
   }
 }
 

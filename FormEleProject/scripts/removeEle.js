@@ -8,8 +8,12 @@ var remove = function remove(pathList) {
     console.log('allEle', allEle)
 
     for (var i = pathList.length + 1; i < allEle.length; i++) {
-      allEle[i].remove()
-      dataDivEle !== null ? dataDivEle.remove() : console.log('nothing bro')
+      console.log(allEle[i])
+      var temp = allEle[i]
+      allEle[i].parentNode.removeChild(temp)
+      dataDivEle !== null
+        ? dataDivEle.parentNode.removeChild(dataDivEle)
+        : console.log('nothing bro')
     }
   }
 }
@@ -24,9 +28,10 @@ var removeIntermittent = function removeIntermittent(pathListI) {
     console.log('allEle', allEleI)
 
     for (var i = pathListI.length; i < allEleI.length; i++) {
-      allEleI[i].remove()
+      var tempI = allEleI[i]
+      allEleI[i].parentNode.removeChild(tempI)
       dataDivEleI !== null
-        ? dataDivEleI.remove()
+        ? dataDivEleI.parentNode.removeChild(dataDivEleI)
         : console.log('no final answer')
     }
   }
