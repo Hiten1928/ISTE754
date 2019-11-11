@@ -27,10 +27,11 @@ function getTabs(id) {
         output += '</div>'
       }
       $('#divTabs').html(output)
-      $('#divTabs [id=tabs]')
-        .tabs()
-        .click()
+      $('#divTabs [id=tabs]').tabs()
       $('#divTabs').modal()
+      $('#divTabs [id=tabs] [id=tabsUL] [aria-controls=General] a').trigger(
+        'click'
+      )
     }
   })
   return output

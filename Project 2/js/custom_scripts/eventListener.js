@@ -22,13 +22,13 @@ $(document).ready(function() {
         case 'People':
           let promisePeople = getInfo(id, $(this).text())
           promisePeople.success(function(data) {
-            getPeopleInfo(data, 'Locations')
+            getPeopleInfo(data, 'People')
           })
           break
         case 'Treatment':
-          let promiseTreatment = getInfo(id, $(this).text())
+          let promiseTreatment = getInfo(id, 'Treatments')
           promiseTreatment.success(function(data) {
-            getTreatmentInfo(data, 'Locations')
+            getTreatmentInfo(data, 'Treatment')
           })
           break
       }
@@ -41,11 +41,40 @@ $(document).ready(function() {
 })
 
 function selectListener(data) {
+  let text = `<table id='locTable'><tr><th>Address</th><th>City</th><th>State</th><th>City</th><th>Zip</th><th>Phone</th><th>Fax</th>`
   $('#divTabs [id=tabs] [id=Locations] [id=LocationsSelect').on(
     'change',
     function(event) {
-      console.log(data)
-      console.log(event)
+      console.log('eventListener', data)
+      console.log(
+        $(this)
+          .children('option:selected')
+          .val()
+      )
+
+      let currLocation = $(this)
+        .children('option:selected')
+        .attr('site')
+      let locData = {}
+      $('location', data).each(function() {
+        if ($('siteId', this).text() === currLocation) {
+          locData = $(this)
+        }
+      })
+      console.log(locData)
+      text += `<tr><td>${$('address1', locData).text()}</td>
+      <td>${$('city', locData).text()}</td>
+      <td>${$('zip', locData).text()}</td>
+      <td>${$('state', locData).text()}</td>
+      </tr>`
+      text += '</table>'
+      if (document.getElementById('locTable')) {
+        console.log(text)
+        document.getElementById('locTable').remove()
+        $('#divTabs [id=tabs] [id=Locations]').append(text)
+      } else {
+        $('#divTabs [id=tabs] [id=Locations]').append(text)
+      }
     }
   )
 }
@@ -68,9 +97,10 @@ function getCounty() {
         let options = `<option value=''>All Counties</option>`
         $('row', data).each(function() {
           console.log($)
-          options += `<option value='${$('CountyName', this)
-            .text()
-            .toLowerCase()}'>${$('CountyName', this).text()}</option>`
+          options += `<option value='${$('CountyName', this).text()}'>${$(
+            'CountyName',
+            this
+          ).text()}</option>`
         })
 
         $('#counties').html(options)
@@ -80,7 +110,7 @@ function getCounty() {
 }
 
 function getCities() {
-  $('#counties').on('change', function(event) {
+  $('#state').on('change', function(event) {
     $.ajax({
       type: 'GET',
       async: true,
@@ -90,10 +120,6 @@ function getCities() {
           '/Cities?state=' +
           $('#state')
             .children('option:selected')
-            .val() +
-          '&county=' +
-          $(this)
-            .children('option:selected')
             .val()
       },
       success: function(data) {
@@ -101,7 +127,7 @@ function getCities() {
         let options = `<option value=''>All Cities</option>`
         $('row', data).each(function() {
           console.log($)
-          options += `<option value=''>${$('CountyName', this).text()}</option>`
+          options += `<option value=''>${$('city', this).text()}</option>`
         })
 
         $('#cities').append(options)
