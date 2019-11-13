@@ -1,0 +1,129 @@
+{
+  "Friends": {
+    "Hiking": {
+      "Professional": {
+        "text": "Auckland Direct Enrollment - University of Auckland",
+        "link": "https://rit-horizons.symplicity.com/index.php?s=programs&mode=form&id=164bc12d3ff54b7ffdffcfe18d7637b5"
+      },
+      "Rookie": {
+        "text": "Environmental Studies: Ethics, Culture, and Sustainability",
+        "link": "https://rit-horizons.symplicity.com/index.php?s=programs&mode=form&id=12551644a7f6f834ecbf90cb2e6a5599"
+      },
+      "question": "What's your skill level"
+    },
+    "Bar Hopping": {
+      "All Night": {
+        "text": "Amsterdam - Business & Economics",
+        "link": "https://rit-horizons.symplicity.com/index.php?s=programs&mode=form&id=aded55589d0ef19fb12035ba8c668362"
+      },
+      "Casual": {
+        "text": "Berlin - Language and Area Studies",
+        "link": "https://rit-horizons.symplicity.com/index.php?s=programs&mode=form&id=d453e8e625ca6dff2ca597ba8e52725d"
+      },
+      "question": "How keen are you in Bar Hopping"
+    },
+    "Historical sight-seeing": {
+      "Victorian Era": {
+        "text": "Central European Studies - Prague",
+        "link": "https://rit-horizons.symplicity.com/index.php?s=programs&mode=form&id=12f12c51021144548086e7619ab138e9"
+      },
+      "Italian": {
+        "Hard of Hearing": {
+          "text": "Deaf Studies",
+          "link": "https://rit-horizons.symplicity.com/index.php?s=programs&mode=form&id=aa25136a53221cb42ae15a94bb466bfe"
+        },
+        "Communcation comfortable": {
+          "text": "Architecture & Urbanism of the Italian Renaissance",
+          "link": "https://rit-horizons.symplicity.com/index.php?s=programs&mode=form&id=02062b4e59a4226d534fecdda08c6369"
+        },
+        "question": "How is your communication comfort level?"
+      },
+      "question": "Which Architectural preference you have?"
+    },
+    "question": "What do you like to do when hanging out with friends?"
+  },
+  "Solo": {
+    "Italian": {
+      "Authentic": {
+        "text": "Accademia Italiana",
+        "link": "https://rit-horizons.symplicity.com/index.php?s=programs&mode=form&id=07e94de6c61f16481540f60277376478"
+      },
+      "Modified": {
+        "text": "Florence University of the Arts",
+        "link": "https://rit-horizons.symplicity.com/index.php?s=programs&mode=form&id=f3da0c07eed1d0ea9655e00f68d0f4de"
+      },
+      "question": "What will be the taste of the cuisine you would have?"
+    },
+    "Chinese": {
+      "Authentic": {
+        "text": "East China Normal University, CIEE Open Campus",
+        "link": "https://rit-horizons.symplicity.com/index.php?s=programs&mode=form&id=fa80ac657a94e0ef3cdb6815f261a177"
+      },
+      "Mod": {
+        "text": "CIEE Study Center, Peking University",
+        "link": "https://rit-horizons.symplicity.com/index.php?s=programs&mode=form&id=1ceb3fe0ad1a713ef261e88b0a24d296"
+      },
+      "question": "What will be the taste of the cuisine you would have?"
+    },
+    "Mediterranean": {
+      "Authentic": {
+        "text": "University Mohammed V, IES Abroad Rabat Center",
+        "link": "https://rit-horizons.symplicity.com/index.php?s=programs&mode=form&id=f9aa95dc2e1f6285957854bc1ed03ad3"
+      },
+      "Mod": {
+        "text": "American University of Sharjah",
+        "link": "https://rit-horizons.symplicity.com/index.php?s=programs&mode=form&id=571fb7465445e53bfd246e90692683cf"
+      },
+      "question": "What will be the taste of the cuisine you would have?"
+    },
+    "Indian": {
+      "Arts & Sciences": {
+        "text": "Arts & Sciences",
+        "link": "https://rit-horizons.symplicity.com/index.php?s=programs&mode=form&id=3f536bc4b91de9f5f3392172ce6f04c0"
+      },
+      "Internship": {
+        "text": "Summer Global Internship in Mumbai",
+        "link": "https://rit-horizons.symplicity.com/index.php?s=programs&mode=form&id=2a5b3be9f1cb001ca3d0aa2646aaa7c9"
+      },
+      "question": "What will be the taste of the cuisine you would have?"
+    },
+    "question": "What's your favourite cuisine"
+  },
+  "Trip Group": {
+    "Package": {
+      "Agency": {
+        "text": "",
+        "link": ""
+      },
+      "Social Media": {
+        "text": "",
+        "link": ""
+      },
+      "question": "How do you select your package"
+    },
+    "Spontaneous Trip": {
+      "Online Packages": {
+        "text": "Arcadia in London",
+        "link": "https://rit-horizons.symplicity.com/index.php?s=programs&mode=form&id=cdac7da95f55d5382b4f9d59f1111d4c"
+      },
+      "Ask Friends": {
+        "text": "RIT Croatia - Direct Enroll",
+        "link": "https://rit-horizons.symplicity.com/index.php?s=programs&mode=form&id=3da6eb4bcb738a1dc2eeefe4fcbaf5aa"
+      },
+      "question": "What is your GoTo process when planning spontaneously?"
+    },
+    "Trip at Destination": {
+      "Ask local people": {
+        "text": "Arcadia in Barcelona",
+        "link": "https://rit-horizons.symplicity.com/index.php?s=programs&mode=form&id=b505468f700db18e7b29e70316bd52e2"
+      },
+      "Local Magazines": {
+        "text": "Digital Storytelling in Portugal",
+        "link": "https://rit-horizons.symplicity.com/index.php?s=programs&mode=form&id=82b4255d14bd4f3bc1b32b84c5bc94fb"
+      },
+      "question": "How would plan your trip once reached the destination?"
+    },
+    "question": "How do you perform trip package selection?"
+  },
+  "question": "How do you like to travel?"
+}
