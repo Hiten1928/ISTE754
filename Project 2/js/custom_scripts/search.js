@@ -2,16 +2,14 @@ function checkSearch() {
   $.ajax({
     url: proxy,
     data: {
-      path: '/Organizations?' + $('#search-form').serialize()
+      path: "/Organizations?" + $("#search-form").serialize()
     },
     success: function(data) {
-      console.log(data)
-
-      let output = ''
+      let output = ""
 
       // if($(data).find('row'))
-      if ($('row', data).length === 0) {
-        output = 'No matches found'
+      if ($("row", data).length === 0) {
+        output = "No matches found"
       } else {
         output = `<table id = 'results-table' class='tablesorter tablesorter-blue'>
                     <thead>
@@ -25,29 +23,29 @@ function checkSearch() {
                         <th>Zip</th>
                       </tr>
                     </thead>`
-        $('row', data).each(function() {
+        $("row", data).each(function() {
           output += `<tr id = 'orgRow' rel="modal:open" href="#divTabs">
                         <td>${$(this)
-                          .find('type')
+                          .find("type")
                           .text()}</td>
                         <td style="display:none;">${$(
-                          'OrganizationID',
+                          "OrganizationID",
                           this
                         ).text()}</td>
-                        <td>${$('Name', this).text()}</td>
-                        <td>${$('Email', this).text()}</td>
-                        <td>${$('city', this).text()}</td>
-                        <td>${$('CountyName', this).text()}</td>
-                        <td>${$('State', this).text()}</td>
-                        <td>${$('zip', this).text()}</td>
+                        <td>${$("Name", this).text()}</td>
+                        <td>${$("Email", this).text()}</td>
+                        <td>${$("city", this).text()}</td>
+                        <td>${$("CountyName", this).text()}</td>
+                        <td>${$("State", this).text()}</td>
+                        <td>${$("zip", this).text()}</td>
                       </tr>`
         })
 
-        output += '</table>'
+        output += "</table>"
       }
-      $('#tableOutput').html(output)
+      $("#tableOutput").html(output)
 
-      $('#results-table').tablesorter({
+      $("#results-table").tablesorter({
         //logic for sorting
         headers: {
           2: { sorter: false }
@@ -57,18 +55,18 @@ function checkSearch() {
   })
 }
 
-$(document).ready(function() {
-  $('#tableOutput').on('click', '#results-table tr', function(event) {
-    var tableData = $(this)
-      .children('td')
-      .map(function() {
-        return $(this).text()
+var ModModal = (function() {
+  return {
+    putModal: function() {
+      $("#tableOutput").on("click", "#results-table tr", function(event) {
+        var tableData = $(this)
+          .children("td")
+          .map(function() {
+            return $(this).text()
+          })
+          .get()
+        modTabs.getTabs(tableData[1])
       })
-      .get()
-    getTabs(tableData[1])
-  })
-})
-
-$(function() {
-  getOrgtypes()
-})
+    }
+  }
+})()
