@@ -1,7 +1,7 @@
 .ui-tabs {
-  position: relative;
-  width: 900px;
-  max-width: 100%;
+  position: relative !important;
+  width: 1000px !important;
+  max-width: 100% !important;
   height: 500px;
   max-height: 100%;
   padding: 0.2em;
@@ -9,7 +9,7 @@
 }
 
 .modal {
-  max-width: 1000px;
+  min-width: 1200px !important;
   overflow-y: initial !important;
   display: block;
   position: relative !important;
@@ -47,4 +47,12 @@
   padding-top: 2em;
   text-align: center;
   height: 50px;
+  background-image: linear-gradient(
+    to right top,
+    #1fdc78,
+    #00d3b0,
+    #00c6dc,
+    #00b4f0,
+    #129eeb
+  );
 }

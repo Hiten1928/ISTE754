@@ -16,49 +16,49 @@ var ModTabListen = (function() {
             case "General":
               let promise = $.getInfo(id, $(this).text())
               promise.success(function(data) {
-                getGeneralInfo(data, "General")
+                ModGeneral.getGeneralInfo(data, "General")
               })
               break
             case "Locations":
               let promiseLoc = $.getInfo(id, $(this).text())
               promiseLoc.success(function(data) {
-                getLocationInfo(data, "Locations")
+                ModLocation.getLocationInfo(data, "Locations")
               })
               break
             case "People":
               let promisePeople = $.getInfo(id, $(this).text())
               promisePeople.success(function(data) {
-                getPeopleInfo(data, "People")
+                ModPeople.getPeopleInfo(data, "People")
               })
               break
             case "Treatment":
               let promiseTreatment = $.getInfo(id, "Treatments")
               promiseTreatment.success(function(data) {
-                getTreatmentInfo(data, "Treatment")
+                ModTreatment.getTreatmentInfo(data, "Treatment")
               })
               break
             case "Training":
               let promiseTraining = $.getInfo(id, "Training")
               promiseTraining.success(function(data) {
-                getTrainingInfo(data, "Training")
+                ModTraining.getTrainingInfo(data, "Training")
               })
               break
             case "Facilities":
               let promiseFacilities = $.getInfo(id, "Facilities")
               promiseFacilities.success(function(data) {
-                getFacilitiesInfo(data, "Facilities")
+                ModFacilities.getFacilitiesInfo(data, "Facilities")
               })
               break
             case "Equipment":
               let promiseEquipment = $.getInfo(id, "Equipment")
               promiseEquipment.success(function(data) {
-                getEquipmentInfo(data, "Equipment")
+                ModEquip.getEquipmentInfo(data, "Equipment")
               })
               break
             case "Physicians":
               let promisePhysicians = $.getInfo(id, "Physicians")
               promisePhysicians.success(function(data) {
-                getPhysiciansInfo(data, "Physicians")
+                ModPhysicians.getPhysiciansInfo(data, "Physicians")
               })
               break
           }
