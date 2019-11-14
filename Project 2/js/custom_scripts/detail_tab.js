@@ -80,7 +80,7 @@ function getLocationInfo(data, tabId) {
   text += `</select>`
   if ($($("#" + tabId)).children().length < 1) {
     $($("#" + tabId)).append(text)
-    locationSelect(data)
+    ModLocationSelect.locationSelect(data)
   }
 }
 
@@ -97,7 +97,7 @@ function getPeopleInfo(data, tabId) {
   text += `</select>`
   if ($($("#" + tabId)).children().length < 1) {
     $($("#" + tabId)).append(text)
-    peopleSelect(data)
+    ModPeopleSelect.peopleSelect(data)
   }
 }
 

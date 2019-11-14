@@ -144,84 +144,94 @@ var ModCities = (function() {
 })()
 
 // ------------------ Event Listener for Location --------------
+var ModLocationSelect = (function() {
+  return {
+    locationSelect: function(data) {
+      $("#divTabs [id=tabs] [id=Locations] [id=LocationsSelect").on(
+        "change",
+        function(event) {
+          if (event.target.value !== "Select Location") {
+            let text = `<table id='locTable' class='table'><tr><thead class='thead-dark'><th>Address</th><th>State</th><th>City</th><th>County</th><th>Zip</th><th>Phone</th><th>Fax</th><th>Latitude</th><th>Longitude</th></thead>`
+            let locData = {}
+            let currLocation = $(this)
+              .children("option:selected")
+              .attr("site")
 
-function locationSelect(data) {
-  $("#divTabs [id=tabs] [id=Locations] [id=LocationsSelect").on(
-    "change",
-    function(event) {
-      if (event.target.value !== "Select Location") {
-        let text = `<table id='locTable' class='table'><tr><thead class='thead-dark'><th>Address</th><th>State</th><th>City</th><th>County</th><th>Zip</th><th>Phone</th><th>Fax</th><th>Latitude</th><th>Longitude</th></thead>`
-        let locData = {}
-        let currLocation = $(this)
-          .children("option:selected")
-          .attr("site")
-
-        $("location", data).each(function() {
-          if ($("siteId", this).text() === currLocation) {
-            locData = $(this)
+            $("location", data).each(function() {
+              if ($("siteId", this).text() === currLocation) {
+                locData = $(this)
+              }
+            })
+            text += `<tr>
+            <td>${$("address1", locData).text()} ${$(
+              "address2",
+              locData
+            ).text()}</td>
+            <td>${$("state", locData).text()}</td>
+            <td>${$("city", locData).text()}</td>
+            <td>${$("countyName", locData).text()}</td>
+            <td>${$("zip", locData).text()}</td>
+            <td>${$("phone", locData).text()}</td>
+            <td>${$("fax", locData).text()}</td>
+            <td>${$("latitude", locData).text()}</td>
+            <td>${$("longitude", locData).text()}</td>
+                    </tr>`
+            text += `</table><div id='map'></div>`
+            if ($("#locTable", this)) {
+              $("#divTabs [id=tabs] [id=Locations] #map").remove()
+              $("#locTable").remove()
+            }
+            $("#divTabs [id=tabs] [id=Locations]").append(text)
+            populateMap(
+              $("latitude", locData).text(),
+              $("longitude", locData).text()
+            )
+          } else {
+            $("#divTabs [id=tabs] [id=Locations] #map").remove()
+            $("#locTable").remove()
           }
-        })
-        text += `<tr>
-        <td>${$("address1", locData).text()} ${$(
-          "address2",
-          locData
-        ).text()}</td>
-        <td>${$("state", locData).text()}</td>
-        <td>${$("city", locData).text()}</td>
-        <td>${$("countyName", locData).text()}</td>
-        <td>${$("zip", locData).text()}</td>
-        <td>${$("phone", locData).text()}</td>
-        <td>${$("fax", locData).text()}</td>
-        <td>${$("latitude", locData).text()}</td>
-        <td>${$("longitude", locData).text()}</td>
-                </tr>`
-        text += `</table><div id='map'></div>`
-        if ($("#locTable", this)) {
-          $("#divTabs [id=tabs] [id=Locations] #map").remove()
-          $("#locTable").remove()
         }
-        $("#divTabs [id=tabs] [id=Locations]").append(text)
-        populateMap(
-          $("latitude", locData).text(),
-          $("longitude", locData).text()
-        )
-      } else {
-        $("#divTabs [id=tabs] [id=Locations] #map").remove()
-        $("#locTable").remove()
-      }
+      )
     }
-  )
-}
+  }
+})()
 
 // -------------------- Details of the specific Training ---------
 
-function peopleSelect(data) {
-  $("#divTabs [id=tabs] [id=People] [id=PeopleSelect").on("change", function() {
-    let text = `<table id='peopleTable' class='table'><tr><thead class='thead-dark'><th>Name</th><th>Role</th></thead>`
-    let currSelection = $(this)
-      .children("option:selected")
-      .attr("site")
-    let peepData = {}
-    $("site", data).each(function() {
-      if ($(this).attr("siteId") === currSelection) {
-        peepData = $(this)
-      }
-    })
+var ModPeopleSelect = (function() {
+  return {
+    peopleSelect: function(data) {
+      $("#divTabs [id=tabs] [id=People] [id=PeopleSelect").on(
+        "change",
+        function() {
+          let text = `<table id='peopleTable' class='table'><tr><thead class='thead-dark'><th>Name</th><th>Role</th></thead>`
+          let currSelection = $(this)
+            .children("option:selected")
+            .attr("site")
+          let peepData = {}
+          $("site", data).each(function() {
+            if ($(this).attr("siteId") === currSelection) {
+              peepData = $(this)
+            }
+          })
 
-    $("person", peepData).size()
+          $("person", peepData).size()
 
-    $("person", peepData).each(function() {
-      text += `<td>${$("honorific", this).text()}. ${$(
-        "fName",
-        this
-      ).text()} ${$("lName", this).text()}</td>
-      <td>${$("role", this).text()}</td>`
-    })
+          $("person", peepData).each(function() {
+            text += `<td>${$("honorific", this).text()}. ${$(
+              "fName",
+              this
+            ).text()} ${$("lName", this).text()}</td>
+          <td>${$("role", this).text()}</td>`
+          })
 
-    text += `</table>`
-    if ($("#peopleTable")) {
-      $("#peopleTable").remove()
+          text += `</table>`
+          if ($("#peopleTable")) {
+            $("#peopleTable").remove()
+          }
+          $("#divTabs [id=tabs] [id=People]").append(text)
+        }
+      )
     }
-    $("#divTabs [id=tabs] [id=People]").append(text)
-  })
-}
+  }
+})()
