@@ -1,9 +1,9 @@
 $(document).ready(function() {
   ModModal.putModal()
-  ModTabListen.tabListener()
+  ModEventlisten.tabListener()
   ModOrgTypes.getOrgtypes()
-  ModCounty.getCounty()
-  ModCities.getCities()
+  ModEventlisten.getCounty()
+  ModEventlisten.getCities()
 
   $(document).ready(function() {
     var options = {

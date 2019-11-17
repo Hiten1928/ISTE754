@@ -1,11 +1,8 @@
-// -------- Populate General Tab -----------
-// var ModPopulateTab = (function(){
-// return {
+var ModDetail = (function() {
+  "use strict"
 
-// }
-// })()
-var ModGeneral = (function() {
   return {
+    // -------- Populate General Tab -----------
     getGeneralInfo: function(data, tabId) {
       let text = ``
       if ($("name", data).text() !== "null" || $("name", data).text() !== "") {
@@ -60,14 +57,10 @@ var ModGeneral = (function() {
       if ($($("#" + tabId)).children().length < 1) {
         $($("#" + tabId)).append(text)
       }
-    }
-  }
-})()
+    },
 
-// -------- Populate Location Tab -----------
+    // -------- Populate Location Tab -----------
 
-var ModLocation = (function() {
-  return {
     getLocationInfo: function(data, tabId) {
       let text = `<select id='${tabId}Select' class="ui approve fluid dropdown"> Location: 
       <option>Select Location</option>`
@@ -79,16 +72,13 @@ var ModLocation = (function() {
       text += `</select>`
       if ($($("#" + tabId)).children().length < 1) {
         $($("#" + tabId)).append(text)
-        ModLocationSelect.locationSelect(data)
+        ModEventlisten.locationSelect(data)
       }
       return false
-    }
-  }
-})()
+    },
 
-// -------- Populate People Tab -----------
-var ModPeople = (function() {
-  return {
+    // -------- Populate People Tab -----------
+
     getPeopleInfo: function(data, tabId) {
       console.log(data)
       let text = `<select id='${tabId}Select' class="ui approve fluid dropdown"> Location: 
@@ -101,16 +91,12 @@ var ModPeople = (function() {
       text += `</select>`
       if ($($("#" + tabId)).children().length < 1) {
         $($("#" + tabId)).append(text)
-        ModPeopleSelect.peopleSelect(data)
+        ModEventlisten.peopleSelect(data)
       }
-    }
-  }
-})()
+    },
 
-// -------- Populate Treatment Tab -----------
+    // -------- Populate Treatment Tab -----------
 
-var ModTreatment = (function() {
-  return {
     getTreatmentInfo: function(data, tabId) {
       let text = `<table id='trainTable' class='ui celled padded table'><thead><tr><th class="single line">Type</th><th>Abbreviation</th></tr></thead>`
       $("treatment", data).each(function() {
@@ -121,14 +107,10 @@ var ModTreatment = (function() {
       if ($($("#" + tabId)).children().length < 1) {
         $($("#" + tabId)).append(text)
       }
-    }
-  }
-})()
+    },
 
-// -------- Populate Training Tab -----------
+    // -------- Populate Training Tab -----------
 
-var ModTraining = (function() {
-  return {
     getTrainingInfo: function(data, tabId) {
       let text = `<table id='trainTable' class='ui celled padded table'><tr><thead><th class="single line">Type</th><th>Abbreviation</th></thead>`
       $("training", data).each(function() {
@@ -139,14 +121,10 @@ var ModTraining = (function() {
       if ($($("#" + tabId)).children().length < 1) {
         $($("#" + tabId)).append(text)
       }
-    }
-  }
-})()
+    },
 
-// -------- Populate Facilities Tab -----------
+    // -------- Populate Facilities Tab -----------
 
-var ModFacilities = (function() {
-  return {
     getFacilitiesInfo: function(data, tabId) {
       let text = `<table id='facilityTable' class='ui celled padded table'><tr><thead><th class="single line">Name</th><th>Quantity</th><th>Description</th></thead>`
       $("facility", data).each(function() {
@@ -158,14 +136,10 @@ var ModFacilities = (function() {
       if ($($("#" + tabId)).children().length < 1) {
         $($("#" + tabId)).append(text)
       }
-    }
-  }
-})()
+    },
 
-// -------- Populate Equipment Tab -----------
+    // -------- Populate Equipment Tab -----------
 
-var ModEquip = (function() {
-  return {
     getEquipmentInfo: function(data, tabId) {
       let text = `<table id='equipTable' class='ui celled padded table'><tr><thead><th class="single line">Name</th><th>Quantity</th><th>Description</th></thead>`
       $("equipment", data).each(function() {
@@ -177,14 +151,10 @@ var ModEquip = (function() {
       if ($($("#" + tabId)).children().length < 1) {
         $($("#" + tabId)).append(text)
       }
-    }
-  }
-})()
+    },
 
-// -------- Populate Equipment Tab -----------
+    // -------- Populate Equipment Tab -----------
 
-var ModPhysicians = (function() {
-  return {
     getPhysiciansInfo: function(data, tabId) {
       let text = `<table id='physicianTable' class='ui celled padded table'><tr><thead><th class="single line">Name</th><th>License</th><th>Phone</th></thead>`
       $("physician", data).each(function() {

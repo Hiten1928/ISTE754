@@ -82,6 +82,8 @@ form {
   text-align: center;
   width: 100%;
   height: auto;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 #divTabs {
@@ -93,14 +95,8 @@ form {
 }
 
 .container {
-  background-image: linear-gradient(
-    to right top,
-    #e1ad22,
-    #b2c44a,
-    #87d27f,
-    #6adab3,
-    #70ddda
-  );
+  display: flex;
+  justify-content: center;
   min-width: 91%;
 }
 /* clearfix */

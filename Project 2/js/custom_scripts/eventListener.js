@@ -1,6 +1,6 @@
 //Event Listener on tabs
 
-var ModTabListen = (function() {
+var ModEventlisten = (function() {
   "use strict"
 
   return {
@@ -16,64 +16,57 @@ var ModTabListen = (function() {
             case "General":
               let promise = $.getInfo(id, $(this).text())
               promise.success(function(data) {
-                ModGeneral.getGeneralInfo(data, "General")
+                ModDetail.getGeneralInfo(data, "General")
               })
               break
             case "Locations":
               let promiseLoc = $.getInfo(id, $(this).text())
               promiseLoc.success(function(data) {
-                ModLocation.getLocationInfo(data, "Locations")
+                ModDetail.getLocationInfo(data, "Locations")
               })
               break
             case "People":
               let promisePeople = $.getInfo(id, $(this).text())
               promisePeople.success(function(data) {
-                ModPeople.getPeopleInfo(data, "People")
+                ModDetail.getPeopleInfo(data, "People")
               })
               break
             case "Treatment":
               let promiseTreatment = $.getInfo(id, "Treatments")
               promiseTreatment.success(function(data) {
-                ModTreatment.getTreatmentInfo(data, "Treatment")
+                ModDetail.getTreatmentInfo(data, "Treatment")
               })
               break
             case "Training":
               let promiseTraining = $.getInfo(id, "Training")
               promiseTraining.success(function(data) {
-                ModTraining.getTrainingInfo(data, "Training")
+                ModDetail.getTrainingInfo(data, "Training")
               })
               break
             case "Facilities":
               let promiseFacilities = $.getInfo(id, "Facilities")
               promiseFacilities.success(function(data) {
-                ModFacilities.getFacilitiesInfo(data, "Facilities")
+                ModDetail.getFacilitiesInfo(data, "Facilities")
               })
               break
             case "Equipment":
               let promiseEquipment = $.getInfo(id, "Equipment")
               promiseEquipment.success(function(data) {
-                ModEquip.getEquipmentInfo(data, "Equipment")
+                ModDetail.getEquipmentInfo(data, "Equipment")
               })
               break
             case "Physicians":
               let promisePhysicians = $.getInfo(id, "Physicians")
               promisePhysicians.success(function(data) {
-                ModPhysicians.getPhysiciansInfo(data, "Physicians")
+                ModDetail.getPhysiciansInfo(data, "Physicians")
               })
               break
           }
           return false
         }
       )
-    }
-  }
-})()
+    },
 
-// ------------- Populate state based on the county ------------
-
-var ModCounty = (function() {
-  "use strict"
-  return {
     getCounty: function() {
       $("#state").on("change", function(event) {
         $.ajax({
@@ -100,16 +93,10 @@ var ModCounty = (function() {
           }
         })
       })
-    }
-  }
-})()
+    },
 
-// ------------- Populate the cities on the basis of state ------------
+    // ------------- Populate state based on the county ------------
 
-var ModCities = (function() {
-  "use strict"
-
-  return {
     getCities: function() {
       $("#state").on("change", function(event) {
         $.ajax({
@@ -140,13 +127,10 @@ var ModCities = (function() {
           }
         })
       })
-    }
-  }
-})()
+    },
 
-// ------------------ Event Listener for Location --------------
-var ModLocationSelect = (function() {
-  return {
+    // ------------------ Event Listener for Location --------------
+
     locationSelect: function(data) {
       $("#divTabs [id=tabs] [id=Locations] [id=LocationsSelect").on(
         "change",
@@ -164,19 +148,19 @@ var ModLocationSelect = (function() {
               }
             })
             text += `<tr>
-            <td>${$("address1", locData).text()} ${$(
+          <td>${$("address1", locData).text()} ${$(
               "address2",
               locData
             ).text()}</td>
-            <td>${$("state", locData).text()}</td>
-            <td>${$("city", locData).text()}</td>
-            <td>${$("countyName", locData).text()}</td>
-            <td>${$("zip", locData).text()}</td>
-            <td>${$("phone", locData).text()}</td>
-            <td>${$("fax", locData).text()}</td>
-            <td>${$("latitude", locData).text()}</td>
-            <td>${$("longitude", locData).text()}</td>
-                    </tr>`
+          <td>${$("state", locData).text()}</td>
+          <td>${$("city", locData).text()}</td>
+          <td>${$("countyName", locData).text()}</td>
+          <td>${$("zip", locData).text()}</td>
+          <td>${$("phone", locData).text()}</td>
+          <td>${$("fax", locData).text()}</td>
+          <td>${$("latitude", locData).text()}</td>
+          <td>${$("longitude", locData).text()}</td>
+                  </tr>`
             text += `</table><div id='map' class=''></div>`
             if ($("#locTable", this)) {
               $("#divTabs [id=tabs] [id=Locations] #map").remove()
@@ -194,14 +178,10 @@ var ModLocationSelect = (function() {
           return false
         }
       )
-    }
-  }
-})()
+    },
 
-// -------------------- Details of the specific Training ---------
+    // -------------------- Details of the specific Training ---------
 
-var ModPeopleSelect = (function() {
-  return {
     peopleSelect: function(data) {
       $("#divTabs [id=tabs] [id=People] [id=PeopleSelect").on(
         "change",
@@ -224,7 +204,7 @@ var ModPeopleSelect = (function() {
               "fName",
               this
             ).text()} ${$("lName", this).text()}</td>
-          <td>${$("role", this).text()}</td>`
+        <td>${$("role", this).text()}</td>`
           })
 
           text += `</table>`
