@@ -62,6 +62,7 @@ var ModTabListen = (function() {
               })
               break
           }
+          return false
         }
       )
     }
@@ -151,7 +152,7 @@ var ModLocationSelect = (function() {
         "change",
         function(event) {
           if (event.target.value !== "Select Location") {
-            let text = `<table id='locTable' class='table'><tr><thead class='thead-dark'><th>Address</th><th>State</th><th>City</th><th>County</th><th>Zip</th><th>Phone</th><th>Fax</th><th>Latitude</th><th>Longitude</th></thead>`
+            let text = `<table id='locTable' class='ui celled padded table'><tr><thead><th>Address</th><th>State</th><th>City</th><th>County</th><th>Zip</th><th>Phone</th><th>Fax</th><th>Latitude</th><th>Longitude</th></thead>`
             let locData = {}
             let currLocation = $(this)
               .children("option:selected")
@@ -176,13 +177,13 @@ var ModLocationSelect = (function() {
             <td>${$("latitude", locData).text()}</td>
             <td>${$("longitude", locData).text()}</td>
                     </tr>`
-            text += `</table><div id='map'></div>`
+            text += `</table><div id='map' class=''></div>`
             if ($("#locTable", this)) {
               $("#divTabs [id=tabs] [id=Locations] #map").remove()
               $("#locTable").remove()
             }
             $("#divTabs [id=tabs] [id=Locations]").append(text)
-            populateMap(
+            ModMap.populateMap(
               $("latitude", locData).text(),
               $("longitude", locData).text()
             )
@@ -190,6 +191,7 @@ var ModLocationSelect = (function() {
             $("#divTabs [id=tabs] [id=Locations] #map").remove()
             $("#locTable").remove()
           }
+          return false
         }
       )
     }
@@ -204,7 +206,7 @@ var ModPeopleSelect = (function() {
       $("#divTabs [id=tabs] [id=People] [id=PeopleSelect").on(
         "change",
         function() {
-          let text = `<table id='peopleTable' class='table'><tr><thead class='thead-dark'><th>Name</th><th>Role</th></thead>`
+          let text = `<table id='peopleTable' class='ui celled padded table'><tr><thead><th>Name</th><th>Role</th></thead>`
           let currSelection = $(this)
             .children("option:selected")
             .attr("site")
@@ -230,6 +232,7 @@ var ModPeopleSelect = (function() {
             $("#peopleTable").remove()
           }
           $("#divTabs [id=tabs] [id=People]").append(text)
+          return false
         }
       )
     }

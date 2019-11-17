@@ -1,5 +1,9 @@
 // -------- Populate General Tab -----------
+// var ModPopulateTab = (function(){
+// return {
 
+// }
+// })()
 var ModGeneral = (function() {
   return {
     getGeneralInfo: function(data, tabId) {
@@ -65,7 +69,7 @@ var ModGeneral = (function() {
 var ModLocation = (function() {
   return {
     getLocationInfo: function(data, tabId) {
-      let text = `<select id='${tabId}Select' class="form-control-sm"> Location: 
+      let text = `<select id='${tabId}Select' class="ui approve fluid dropdown"> Location: 
       <option>Select Location</option>`
       $("location", data).each(function() {
         text += `<option site=${$("siteId", this).text()}>${$("type", this)
@@ -77,6 +81,7 @@ var ModLocation = (function() {
         $($("#" + tabId)).append(text)
         ModLocationSelect.locationSelect(data)
       }
+      return false
     }
   }
 })()
@@ -85,7 +90,8 @@ var ModLocation = (function() {
 var ModPeople = (function() {
   return {
     getPeopleInfo: function(data, tabId) {
-      let text = `<select id='${tabId}Select' class="form-control-sm"> Location: 
+      console.log(data)
+      let text = `<select id='${tabId}Select' class="ui approve fluid dropdown"> Location: 
     <option>Select Location</option>`
       $("site", data).each(function() {
         text += `<option site="${$(this).attr("siteId")}">${$(this).attr(
@@ -106,7 +112,7 @@ var ModPeople = (function() {
 var ModTreatment = (function() {
   return {
     getTreatmentInfo: function(data, tabId) {
-      let text = `<table id='trainTable' class='table'><tr><thead class='thead-dark'><th>Type</th><th>Abbreviation</th></thead>`
+      let text = `<table id='trainTable' class='ui celled padded table'><thead><tr><th class="single line">Type</th><th>Abbreviation</th></tr></thead>`
       $("treatment", data).each(function() {
         text += `<tr><td>${$("type", this).text()}</td>
       <td>${$("abbreviation", this).text()}</td></tr>`
@@ -124,7 +130,7 @@ var ModTreatment = (function() {
 var ModTraining = (function() {
   return {
     getTrainingInfo: function(data, tabId) {
-      let text = `<table id='trainTable' class='table'><tr><thead class='thead-dark'><th>Type</th><th>Abbreviation</th></thead>`
+      let text = `<table id='trainTable' class='ui celled padded table'><tr><thead><th class="single line">Type</th><th>Abbreviation</th></thead>`
       $("training", data).each(function() {
         text += `<tr><td>${$("type", this).text()}</td>
         <td>${$("abbreviation", this).text()}</td></tr>`
@@ -142,7 +148,7 @@ var ModTraining = (function() {
 var ModFacilities = (function() {
   return {
     getFacilitiesInfo: function(data, tabId) {
-      let text = `<table id='facilityTable' class='table'><tr><thead class='thead-dark'><th>Name</th><th>Quantity</th><th>Description</th></thead>`
+      let text = `<table id='facilityTable' class='ui celled padded table'><tr><thead><th class="single line">Name</th><th>Quantity</th><th>Description</th></thead>`
       $("facility", data).each(function() {
         text += `<tr><td>${$("type", this).text()}</td>
         <td>${$("quantity", this).text()}</td>
@@ -161,7 +167,7 @@ var ModFacilities = (function() {
 var ModEquip = (function() {
   return {
     getEquipmentInfo: function(data, tabId) {
-      let text = `<table id='equipTable' class='table'><tr><thead class='thead-dark'><th>Name</th><th>Quantity</th><th>Description</th></thead>`
+      let text = `<table id='equipTable' class='ui celled padded table'><tr><thead><th class="single line">Name</th><th>Quantity</th><th>Description</th></thead>`
       $("equipment", data).each(function() {
         text += `<tr><td>${$("type", this).text()}</td>
         <td>${$("quantity", this).text()}</td>
@@ -180,7 +186,7 @@ var ModEquip = (function() {
 var ModPhysicians = (function() {
   return {
     getPhysiciansInfo: function(data, tabId) {
-      let text = `<table id='physicianTable' class='table'><tr><thead class='thead-dark'><th>Name</th><th>License</th><th>Phone</th></thead>`
+      let text = `<table id='physicianTable' class='ui celled padded table'><tr><thead><th class="single line">Name</th><th>License</th><th>Phone</th></thead>`
       $("physician", data).each(function() {
         text += `<tr>
         <td>${$("fName", this).text()} ${$("mName", this).text()} ${$(
