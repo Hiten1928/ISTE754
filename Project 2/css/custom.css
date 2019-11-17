@@ -70,7 +70,6 @@ fieldset {
 
 form {
   display: flex;
-  -ms-flex: 1;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-around;

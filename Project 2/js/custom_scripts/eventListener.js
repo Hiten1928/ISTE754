@@ -88,7 +88,7 @@ var ModCounty = (function() {
                 .val()
           },
           success: function(data) {
-            let options = `<option value=''>All Counties</option>`
+            let options = `<option value='' selected="selected" disabled>All Counties</option>`
             $("row", data).each(function() {
               options += `<option value='${$("CountyName", this).text()}'>${$(
                 "CountyName",
@@ -124,7 +124,7 @@ var ModCities = (function() {
                 .val()
           },
           success: function(data) {
-            let options = `<option value=''>All Cities</option>`
+            let options = `<option value='' selected="selected" disabled>All Cities</option>`
             $("row", data).each(function() {
               options += `<option value='${$("city", this).text()}'>${$(
                 "city",
