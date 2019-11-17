@@ -1,63 +1,63 @@
 //Event Listener on tabs
 
-var ModEventlisten = (function() {
+var ModEventlisten = (function () {
   "use strict"
 
   return {
-    tabListener: function() {
+    tabListener: function () {
       $("#divTabs").on(
         "click",
         "#tabs [role=tablist] [role=tab] a",
-        function() {
+        function () {
           let id = $("#divTabs")
             .find("#tabs")
             .attr("role")
           switch ($(this).text()) {
             case "General":
               let promise = $.getInfo(id, $(this).text())
-              promise.success(function(data) {
+              promise.success(function (data) {
                 ModDetail.getGeneralInfo(data, "General")
               })
               break
             case "Locations":
               let promiseLoc = $.getInfo(id, $(this).text())
-              promiseLoc.success(function(data) {
+              promiseLoc.success(function (data) {
                 ModDetail.getLocationInfo(data, "Locations")
               })
               break
             case "People":
               let promisePeople = $.getInfo(id, $(this).text())
-              promisePeople.success(function(data) {
+              promisePeople.success(function (data) {
                 ModDetail.getPeopleInfo(data, "People")
               })
               break
             case "Treatment":
               let promiseTreatment = $.getInfo(id, "Treatments")
-              promiseTreatment.success(function(data) {
+              promiseTreatment.success(function (data) {
                 ModDetail.getTreatmentInfo(data, "Treatment")
               })
               break
             case "Training":
               let promiseTraining = $.getInfo(id, "Training")
-              promiseTraining.success(function(data) {
+              promiseTraining.success(function (data) {
                 ModDetail.getTrainingInfo(data, "Training")
               })
               break
             case "Facilities":
               let promiseFacilities = $.getInfo(id, "Facilities")
-              promiseFacilities.success(function(data) {
+              promiseFacilities.success(function (data) {
                 ModDetail.getFacilitiesInfo(data, "Facilities")
               })
               break
             case "Equipment":
               let promiseEquipment = $.getInfo(id, "Equipment")
-              promiseEquipment.success(function(data) {
+              promiseEquipment.success(function (data) {
                 ModDetail.getEquipmentInfo(data, "Equipment")
               })
               break
             case "Physicians":
               let promisePhysicians = $.getInfo(id, "Physicians")
-              promisePhysicians.success(function(data) {
+              promisePhysicians.success(function (data) {
                 ModDetail.getPhysiciansInfo(data, "Physicians")
               })
               break
@@ -67,8 +67,8 @@ var ModEventlisten = (function() {
       )
     },
 
-    getCounty: function() {
-      $("#state").on("change", function(event) {
+    getCounty: function () {
+      $("#state").on("change", function (event) {
         $.ajax({
           type: "GET",
           async: true,
@@ -80,9 +80,9 @@ var ModEventlisten = (function() {
                 .children("option:selected")
                 .val()
           },
-          success: function(data) {
+          success: function (data) {
             let options = `<option value='' selected="selected" disabled>All Counties</option>`
-            $("row", data).each(function() {
+            $("row", data).each(function () {
               options += `<option value='${$("CountyName", this).text()}'>${$(
                 "CountyName",
                 this
@@ -97,8 +97,8 @@ var ModEventlisten = (function() {
 
     // ------------- Populate state based on the county ------------
 
-    getCities: function() {
-      $("#state").on("change", function(event) {
+    getCities: function () {
+      $("#state").on("change", function (event) {
         $.ajax({
           type: "GET",
           async: true,
@@ -110,9 +110,9 @@ var ModEventlisten = (function() {
                 .children("option:selected")
                 .val()
           },
-          success: function(data) {
+          success: function (data) {
             let options = `<option value='' selected="selected" disabled>All Cities</option>`
-            $("row", data).each(function() {
+            $("row", data).each(function () {
               options += `<option value='${$("city", this).text()}'>${$(
                 "city",
                 this
@@ -131,10 +131,10 @@ var ModEventlisten = (function() {
 
     // ------------------ Event Listener for Location --------------
 
-    locationSelect: function(data) {
+    locationSelect: function (data) {
       $("#divTabs [id=tabs] [id=Locations] [id=LocationsSelect").on(
         "change",
-        function(event) {
+        function (event) {
           if (event.target.value !== "Select Location") {
             let text = `<table id='locTable' class='ui celled padded table'><tr><thead><th>Address</th><th>State</th><th>City</th><th>County</th><th>Zip</th><th>Phone</th><th>Fax</th><th>Latitude</th><th>Longitude</th></thead>`
             let locData = {}
@@ -142,7 +142,7 @@ var ModEventlisten = (function() {
               .children("option:selected")
               .attr("site")
 
-            $("location", data).each(function() {
+            $("location", data).each(function () {
               if ($("siteId", this).text() === currLocation) {
                 locData = $(this)
               }
@@ -182,16 +182,16 @@ var ModEventlisten = (function() {
 
     // -------------------- Details of the specific Training ---------
 
-    peopleSelect: function(data) {
+    peopleSelect: function (data) {
       $("#divTabs [id=tabs] [id=People] [id=PeopleSelect").on(
         "change",
-        function() {
+        function () {
           let text = `<table id='peopleTable' class='ui celled padded table'><tr><thead><th>Name</th><th>Role</th></thead>`
           let currSelection = $(this)
             .children("option:selected")
             .attr("site")
           let peepData = {}
-          $("site", data).each(function() {
+          $("site", data).each(function () {
             if ($(this).attr("siteId") === currSelection) {
               peepData = $(this)
             }
@@ -199,7 +199,7 @@ var ModEventlisten = (function() {
 
           $("person", peepData).size()
 
-          $("person", peepData).each(function() {
+          $("person", peepData).each(function () {
             text += `<td>${$("honorific", this).text()}. ${$(
               "fName",
               this
@@ -217,4 +217,4 @@ var ModEventlisten = (function() {
       )
     }
   }
-})()
+}())

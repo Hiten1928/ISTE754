@@ -1,7 +1,7 @@
-var modTabs = (function() {
+var modTabs = (function () {
   "use strict"
   return {
-    getTabs: function(id) {
+    getTabs: function (id) {
       if (id) {
         let output = ""
         $.ajax({
@@ -10,13 +10,13 @@ var modTabs = (function() {
           url: proxy,
           cache: false,
           data: { path: "/Application/Tabs?orgId=" + id },
-          success: function(data) {
+          success: function (data) {
             if ($(data).find("error").length !== 0) {
               output = "No tabs found"
             } else {
               //Creating wrapper div
               output += `<i class="close positive icon" style="color:white"></i><div role=${id} id=tabs><ul id=tabsUL>`
-              $("row", data).each(function() {
+              $("row", data).each(function () {
                 //Creating tabs list
                 output += `<li class="ui approve"><a href='#${$(
                   "Tab",
@@ -24,7 +24,7 @@ var modTabs = (function() {
                 ).text()}'>${$("Tab", this).text()}</a></li>`
               })
               output += "</ul>"
-              $("row", data).each(function() {
+              $("row", data).each(function () {
                 //Creating placeholder text
                 output += `<div id='${$(
                   "Tab",
@@ -45,7 +45,7 @@ var modTabs = (function() {
                   deny: ".actions .negative, .actions .deny, .actions .cancel"
                 },
                 closable: false,
-                onApprove: function() {
+                onApprove: function () {
                   console.log("closed")
                 }
               })
@@ -59,4 +59,4 @@ var modTabs = (function() {
       }
     }
   }
-})()
+}())

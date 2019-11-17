@@ -1,9 +1,9 @@
-var ModDetail = (function() {
+var ModDetail = (function () {
   "use strict"
 
   return {
     // -------- Populate General Tab -----------
-    getGeneralInfo: function(data, tabId) {
+    getGeneralInfo: function (data, tabId) {
       let text = ``
       if ($("name", data).text() !== "null" || $("name", data).text() !== "") {
         text += `<p><strong>Name:  </strong>${$("name", data).text()}</p>`
@@ -61,10 +61,10 @@ var ModDetail = (function() {
 
     // -------- Populate Location Tab -----------
 
-    getLocationInfo: function(data, tabId) {
+    getLocationInfo: function (data, tabId) {
       let text = `<select id='${tabId}Select' class="ui approve fluid dropdown"> Location: 
       <option>Select Location</option>`
-      $("location", data).each(function() {
+      $("location", data).each(function () {
         text += `<option site=${$("siteId", this).text()}>${$("type", this)
           .text()
           .toUpperCase()} - ${$("address1", this).text()}</option>`
@@ -79,11 +79,11 @@ var ModDetail = (function() {
 
     // -------- Populate People Tab -----------
 
-    getPeopleInfo: function(data, tabId) {
+    getPeopleInfo: function (data, tabId) {
       console.log(data)
       let text = `<select id='${tabId}Select' class="ui approve fluid dropdown"> Location: 
     <option>Select Location</option>`
-      $("site", data).each(function() {
+      $("site", data).each(function () {
         text += `<option site="${$(this).attr("siteId")}">${$(this).attr(
           "address"
         )}</option>`
@@ -97,9 +97,9 @@ var ModDetail = (function() {
 
     // -------- Populate Treatment Tab -----------
 
-    getTreatmentInfo: function(data, tabId) {
+    getTreatmentInfo: function (data, tabId) {
       let text = `<table id='trainTable' class='ui celled padded table'><thead><tr><th class="single line">Type</th><th>Abbreviation</th></tr></thead>`
-      $("treatment", data).each(function() {
+      $("treatment", data).each(function () {
         text += `<tr><td>${$("type", this).text()}</td>
       <td>${$("abbreviation", this).text()}</td></tr>`
       })
@@ -111,9 +111,9 @@ var ModDetail = (function() {
 
     // -------- Populate Training Tab -----------
 
-    getTrainingInfo: function(data, tabId) {
+    getTrainingInfo: function (data, tabId) {
       let text = `<table id='trainTable' class='ui celled padded table'><tr><thead><th class="single line">Type</th><th>Abbreviation</th></thead>`
-      $("training", data).each(function() {
+      $("training", data).each(function () {
         text += `<tr><td>${$("type", this).text()}</td>
         <td>${$("abbreviation", this).text()}</td></tr>`
       })
@@ -125,9 +125,9 @@ var ModDetail = (function() {
 
     // -------- Populate Facilities Tab -----------
 
-    getFacilitiesInfo: function(data, tabId) {
+    getFacilitiesInfo: function (data, tabId) {
       let text = `<table id='facilityTable' class='ui celled padded table'><tr><thead><th class="single line">Name</th><th>Quantity</th><th>Description</th></thead>`
-      $("facility", data).each(function() {
+      $("facility", data).each(function () {
         text += `<tr><td>${$("type", this).text()}</td>
         <td>${$("quantity", this).text()}</td>
         <td>${$("description", this).text()}</td></tr>`
@@ -140,9 +140,9 @@ var ModDetail = (function() {
 
     // -------- Populate Equipment Tab -----------
 
-    getEquipmentInfo: function(data, tabId) {
+    getEquipmentInfo: function (data, tabId) {
       let text = `<table id='equipTable' class='ui celled padded table'><tr><thead><th class="single line">Name</th><th>Quantity</th><th>Description</th></thead>`
-      $("equipment", data).each(function() {
+      $("equipment", data).each(function () {
         text += `<tr><td>${$("type", this).text()}</td>
         <td>${$("quantity", this).text()}</td>
         <td>${$("description", this).text()}</td></tr>`
@@ -155,9 +155,9 @@ var ModDetail = (function() {
 
     // -------- Populate Equipment Tab -----------
 
-    getPhysiciansInfo: function(data, tabId) {
+    getPhysiciansInfo: function (data, tabId) {
       let text = `<table id='physicianTable' class='ui celled padded table'><tr><thead><th class="single line">Name</th><th>License</th><th>Phone</th></thead>`
-      $("physician", data).each(function() {
+      $("physician", data).each(function () {
         text += `<tr>
         <td>${$("fName", this).text()} ${$("mName", this).text()} ${$(
           "lName",
@@ -172,4 +172,4 @@ var ModDetail = (function() {
       }
     }
   }
-})()
+}())

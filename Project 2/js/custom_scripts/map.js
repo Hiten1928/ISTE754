@@ -1,6 +1,6 @@
-var ModMap = (function() {
+var ModMap = (function () {
   return {
-    populateMap: function(lat, longi) {
+    populateMap: function (lat, longi) {
       if (parseFloat(lat) && parseFloat(longi))
         var map = L.map("map").setView([parseFloat(lat), parseFloat(longi)], 13)
 
@@ -15,4 +15,4 @@ var ModMap = (function() {
         .openPopup()
     }
   }
-})()
+}())
