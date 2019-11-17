@@ -1,7 +1,17 @@
-.ui-tabs {
+.ui-tabs-nav li {
+  list-style: none;
+  float: left; /* disabled this */
   position: relative;
-  width: 900px;
-  max-width: 100%;
+  top: 0;
+  margin: 1px 0.2em 0 0;
+  border-bottom-width: 0;
+  padding: 0;
+  white-space: nowrap;
+}
+.ui-tabs {
+  position: relative !important;
+  width: 1000px !important;
+  max-width: 100% !important;
   height: 500px;
   max-height: 100%;
   padding: 0.2em;
@@ -9,42 +19,116 @@
 }
 
 .modal {
-  max-width: 1000px;
+  min-width: 1100px !important;
   overflow-y: initial !important;
-  display: block;
+  display: flex !important;
   position: relative !important;
-  text-align: center !important;
 }
-/* .ui-widget-content {
-  height: 500px;
-  /* position: relative;
-  padding: 0.5 em; 
-} */
-.modal-body {
-  overflow-y: auto;
+
+#tabs {
+  overflow-y: auto !important;
+  margin: 2% auto;
+  background-image: linear-gradient(
+    to right top,
+    #e1ad22,
+    #b2c44a,
+    #87d27f,
+    #6adab3,
+    #70ddda
+  );
 }
 
 #locTable {
   margin-top: 50px;
 }
 
-.ui-widget-content {
-  border: white !important;
-  background: #ffffff;
-}
-
 #map {
   position: relative;
-  height: 400px;
+  height: 30vh;
   outline: none;
 }
 
-.form {
+.jumbotron {
+  flex: 1 100%;
   text-align: center;
+  width: 100%;
+  height: auto;
+  padding: 2% !important;
+  position: relative;
+  text-overflow: clip;
+  border-radius: 0 0 85% 85% / 0%;
+  font-weight: normal;
+  font-size: 3em;
+  color: black;
+  font-family: "Josefin Sans", sans-serif;
+  background-attachment: fixed;
 }
 
-.jumbotron {
-  padding-top: 2em;
+fieldset {
+  min-width: 500px !important;
+}
+
+form {
+  display: flex;
+  -ms-flex: 1;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  margin: 3%;
+}
+
+.head-container {
+  flex: 1 100%;
   text-align: center;
-  height: 50px;
+  width: 100%;
+  height: auto;
+}
+
+#divTabs {
+  min-height: 19px;
+  min-width: 1086px;
+  background-attachment: fixed;
+
+  border-radius: 11px;
+}
+
+.container {
+  background-image: linear-gradient(
+    to right top,
+    #e1ad22,
+    #b2c44a,
+    #87d27f,
+    #6adab3,
+    #70ddda
+  );
+  min-width: 91%;
+}
+/* clearfix */
+.container:before,
+.container:after {
+  content: "";
+  display: table;
+}
+.container:after {
+  clear: both;
+}
+
+.item {
+  float: left;
+  margin-bottom: 0px;
+  padding: 10px;
+}
+.item img {
+  max-width: 100%;
+  max-height: 100%;
+  vertical-align: bottom;
+}
+.first-item {
+  clear: both;
+}
+/* remove margin bottom on last row */
+.last-row,
+.last-row ~ .item {
+  margin-bottom: 0;
 }

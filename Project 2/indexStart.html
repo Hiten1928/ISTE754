@@ -9,12 +9,8 @@
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
-
   <link rel="stylesheet" href="css/theme.blue.css" />
-  <script src='js/jquery.tablesorter.js'></script>
+  <script src='js/tablesorter/jquery.tablesorter.js'></script>
 
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
     integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
@@ -26,101 +22,166 @@
 
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  <link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">
+  <script src="semantic/dist/semantic.min.js"></script>
 </head>
 
 <body>
-  <div class="jumbotron">
-    <h1>Yellow Pages for Hospital</h1>
+  <div class="head-container two fields">
+    <h2 class="ui icon header">
+      <div class="field">
+
+        <i class="heartbeat icon field">
+          Emergency Services Directory
+        </i>
+      </div>
+    </h2>
   </div>
 
-  <div id="divTabs"></div>
+  <br>
+</body>
+<div>
+  <div id="divTabs" class="approve">
 
-  <form id="search-form" class="form">
-    <fieldset>
-      <legend>Search Criteria</legend>
-      <div class='form-group'>Organization Type <select id="orgType" name="type" onchange=""
-          class="form-control-sm"></select>
+  </div>
+</div>
+<div class="container">
+  <div class="item first-item">
+    <img src="img/1.jpeg" width="300" height="200" />
+  </div>
+  <div class="item">
+    <img src="img/2.jpeg" width="300" height="200" />
+  </div>
+  <div class="item">
+    <img src="img/3.jpeg" width="300" height="200" />
+  </div>
+  <div class="item">
+    <img src="img/4.jpeg" width="300" height="200" />
+  </div>
+  <div class="item">
+    <img src="img/5.jpeg" width="300" height="200" />
+  </div>
+  <div class="item">
+    <img src="img/6.jpeg" width="300" height="200" />
+  </div>
+</div>
+
+<form id="search-form" class="ui form">
+  <fieldset>
+    <div class="two fields">
+      <div id='first' class='field'>
+        <h4 class="ui dividing header">Organization Type</h4>
+        <select id="orgType" name="type" class="ui fluid dropdown"></select>
       </div>
-      <div class='form-group'><span id="orgLabel">Organization Name</span> <input name='org' id="orgName" type="text">
+      <div class='field'>
+        <h4 class="ui dividing header">Organization Name</h4>
+        <input name='org' id="orgName" type="text" class="ui input">
+        <em style="color: rgb(104, 129, 162);">*can be partial - "vol" for "Volunteer"</em>
       </div>
-      <em style="color: rgb(104, 129, 162);">*can be partial - "vol" for "Volunteer"</em>
-      <div class='form-group'>State <select id="state" onchange="" name='state' class="form-control-sm">
-          <option value="">
-            All States
-          </option>
-          <option value="AK">AK</option>
-          <option value="AL">AL</option>
-          <option value="AR">AR</option>
-          <option value="AZ">AZ</option>
-          <option value="CA">CA</option>
-          <option value="CO">CO</option>
-          <option value="CT">CT</option>
-          <option value="DC">DC</option>
-          <option value="DE">DE</option>
-          <option value="FL">FL</option>
-          <option value="GA">GA</option>
-          <option value="HI">HI</option>
-          <option value="IA">IA</option>
-          <option value="ID">ID</option>
-          <option value="IL">IL</option>
-          <option value="IN">IN</option>
-          <option value="KS">KS</option>
-          <option value="KY">KY</option>
-          <option value="LA">LA</option>
-          <option value="MA">MA</option>
-          <option value="MD">MD</option>
-          <option value="ME">ME</option>
-          <option value="MI">MI</option>
-          <option value="MN">MN</option>
-          <option value="MO">MO</option>
-          <option value="MS">MS</option>
-          <option value="MT">MT</option>
-          <option value="NC">NC</option>
-          <option value="ND">ND</option>
-          <option value="NE">NE</option>
-          <option value="NH">NH</option>
-          <option value="NJ">NJ</option>
-          <option value="NM">NM</option>
-          <option value="NV">NV</option>
-          <option value="NY" selected="selected">NY</option>
-          <option value="OH">OH</option>
-          <option value="OK">OK</option>
-          <option value="OR">OR</option>
-          <option value="PA">PA</option>
-          <option value="RI">RI</option>
-          <option value="SC">SC</option>
-          <option value="SD">SD</option>
-          <option value="TN">TN</option>
-          <option value="TX">TX</option>
-          <option value="UT">UT</option>
-          <option value="VA">VA</option>
-          <option value="VT">VT</option>
-          <option value="WA">WA</option>
-          <option value="WI">WI</option>
-          <option value="WV">WV</option>
-          <option value="WY">WY</option>
-        </select> <span id="orgCitySearch"></span></p>
+    </div>
+
+
+    <div class='field'>
+      <h4 class="ui dividing header">State</h4>
+      <select id="state" onchange="" name='state' class="ui fluid dropdown">
+        <!-- <select id="state" name='state' class="chosen-select"> -->
+        <option value="">
+          All States
+        </option>
+        <option value="AK">AK</option>
+        <option value="AL">AL</option>
+        <option value="AR">AR</option>
+        <option value="AZ">AZ</option>
+        <option value="CA">CA</option>
+        <option value="CO">CO</option>
+        <option value="CT">CT</option>
+        <option value="DC">DC</option>
+        <option value="DE">DE</option>
+        <option value="FL">FL</option>
+        <option value="GA">GA</option>
+        <option value="HI">HI</option>
+        <option value="IA">IA</option>
+        <option value="ID">ID</option>
+        <option value="IL">IL</option>
+        <option value="IN">IN</option>
+        <option value="KS">KS</option>
+        <option value="KY">KY</option>
+        <option value="LA">LA</option>
+        <option value="MA">MA</option>
+        <option value="MD">MD</option>
+        <option value="ME">ME</option>
+        <option value="MI">MI</option>
+        <option value="MN">MN</option>
+        <option value="MO">MO</option>
+        <option value="MS">MS</option>
+        <option value="MT">MT</option>
+        <option value="NC">NC</option>
+        <option value="ND">ND</option>
+        <option value="NE">NE</option>
+        <option value="NH">NH</option>
+        <option value="NJ">NJ</option>
+        <option value="NM">NM</option>
+        <option value="NV">NV</option>
+        <option value="NY" selected="selected">NY</option>
+        <option value="OH">OH</option>
+        <option value="OK">OK</option>
+        <option value="OR">OR</option>
+        <option value="PA">PA</option>
+        <option value="RI">RI</option>
+        <option value="SC">SC</option>
+        <option value="SD">SD</option>
+        <option value="TN">TN</option>
+        <option value="TX">TX</option>
+        <option value="UT">UT</option>
+        <option value="VA">VA</option>
+        <option value="VT">VT</option>
+        <option value="WA">WA</option>
+        <option value="WI">WI</option>
+        <option value="WV">WV</option>
+        <option value="WY">WY</option>
+      </select> <span id="orgCitySearch"></span></p>
+    </div>
+    <div class="three fields">
+      <div class="field">
+        <h4 class="ui dividing header">County</h4>
+        <select id='counties' name="county" class="ui fluid dropdown">
+        </select>
       </div>
-      <div class="form-group">County <select id='counties' name="county" class="form-control-sm">
-        </select></div>
-      <div class="form-group">Cities <select id='cities' name="city" class="form-control-sm">
-        </select></div>
-      <div class="form-group">ZIP Code <input id="zip" type="text" name='zip'></div>
-      <div class="form-group">
-        <input value="Show Results" onclick="checkSearch()" id="btnSearch" class="button" type="button"> <input
-          type="reset" class="button" value="Reset Form" onclick="">
+      <div class="field">
+        <h4 class="ui dividing header">City</h4>
+        <select id='cities' name="city" class="ui fluid dropdown">
+        </select>
       </div>
-    </fieldset>
-  </form>
-  <div id="tableOutput"></div>
+      <div class="field">
+        <h4 class="ui dividing header">Zip Code</h4>
+        <input id="zip" type="text" name='zip' class="ui input">
+      </div>
+    </div>
+
+
+    <div class="field">
+      <input value="Show Results" onclick="checkSearch()" id="btnSearch" class="ui primary basic button" type="button">
+      <input type="reset" class="ui basic button" value="Reset Form" style="float: right;">
+    </div>
+  </fieldset>
+</form>
+<div id="tableOutput"></div>
 </body>
 
+<script src="js/dist/autosize.js" type="text/javascript"></script>
+<script src="js/rowGrid/jquery.row-grid.js" type="text/javascript"></script>
+<script src="js/rowGrid/jquery.row-grid.js" type="text/javascript"></script>
+<script src="js/chosen_v1.8.7/chosen.jquery.js" type="text/javascript"></script>
+<script src="js/chosen_v1.8.7/chosen.jquery.min.js" type="text/javascript"></script>
+<script src="js/dist/autosize.min.js" type="text/javascript"></script>
 <script src="js/custom_scripts/search.js" type="text/javascript"></script>
 <script src="js/custom_scripts/Tabs.js" type="text/javascript"></script>
 <script src="js/custom_scripts/detail_tab.js" type="text/javascript"></script>
 <script src="js/custom_scripts/eventListener.js" type="text/javascript"></script>
 <script src="js/custom_scripts/org_ajax.js" type="text/javascript"></script>
 <script src="js/custom_scripts/map.js" type="text/javascript"></script>
+<script src="js/custom_scripts/myPlugin.js" type="text/javascript"></script>
 <script src="js/custom_scripts/document_ready.js" type="text/javascript"></script>
 
 </html>

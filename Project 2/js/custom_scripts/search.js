@@ -13,7 +13,7 @@ function checkSearch() {
       } else {
         output = `<table id = 'results-table' class='tablesorter tablesorter-blue'>
                     <thead>
-                      <tr>
+                      <tr class="disabled">
                         <th>Type</th>
                         <th>Name</th>
                         <th>Email</th>
@@ -24,7 +24,7 @@ function checkSearch() {
                       </tr>
                     </thead>`
         $("row", data).each(function() {
-          output += `<tr id = 'orgRow' rel="modal:open" href="#divTabs">
+          output += `<tr id = 'orgRow' rel="modal:open" href="#divTabs" class="disabled">
                         <td>${$(this)
                           .find("type")
                           .text()}</td>
@@ -66,6 +66,7 @@ var ModModal = (function() {
           })
           .get()
         modTabs.getTabs(tableData[1])
+        return false
       })
     }
   }

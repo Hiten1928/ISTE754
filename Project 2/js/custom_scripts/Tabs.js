@@ -14,24 +14,41 @@ var modTabs = (function() {
             output = "No tabs found"
           } else {
             //Creating wrapper div
-            output += `<div role=${id} id=tabs><ul id=tabsUL>`
+            output += `<i class="close positive icon" style="color:white"></i><div role=${id} id=tabs><ul id=tabsUL>`
             $("row", data).each(function() {
               //Creating tabs list
-              output += `<li><a href='#${$("Tab", this).text()}'>${$(
+              output += `<li class="ui approve"><a href='#${$(
                 "Tab",
                 this
-              ).text()}</a></li>`
+              ).text()}'>${$("Tab", this).text()}</a></li>`
             })
             output += "</ul>"
             $("row", data).each(function() {
               //Creating placeholder text
-              output += `<div id='${$("Tab", this).text()}'></div>`
+              output += `<div id='${$(
+                "Tab",
+                this
+              ).text()}'  class="field"></div>`
             })
             output += "</div>"
           }
           $("#divTabs").html(output)
           $("#divTabs [id=tabs]").tabs()
-          $("#divTabs").modal()
+          $("#divTabs")
+            .modal({
+              className: {
+                active: "active",
+                scrolling: "scrolling"
+              },
+              selector: {
+                deny: ".actions .negative, .actions .deny, .actions .cancel"
+              },
+              closable: false,
+              onApprove: function() {
+                console.log("closed")
+              }
+            })
+            .modal("show")
           $("#divTabs [id=tabs] [id=tabsUL] [aria-controls=General] a").trigger(
             "click"
           )
