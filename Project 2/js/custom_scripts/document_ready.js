@@ -1,11 +1,15 @@
-$(document).ready(function() {
+
+// All the document ready functions call like the orgType
+//rowGrid plugin initialization
+//Event listeners for the counties and cities
+$(document).ready(function () {
   ModModal.putModal()
   ModEventlisten.tabListener()
   ModOrgTypes.getOrgtypes()
   ModEventlisten.getCounty()
   ModEventlisten.getCities()
 
-  $(document).ready(function() {
+  $(document).ready(function () {
     var options = {
       minMargin: 5,
       maxMargin: 15,

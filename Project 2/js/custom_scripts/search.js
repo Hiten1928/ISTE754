@@ -1,3 +1,5 @@
+
+//Module for populating the initial table based on the search form
 var ModSearchResults = (function () {
   return {
     checkSearch: function () {
@@ -18,6 +20,8 @@ var ModSearchResults = (function () {
             </div>
           </div>`
           } else {
+            //Since Physician organization type returns a different data which includes the name
+            //of the physician and the hospital they are affiliated to
             if ($("#search-form").serializeArray()[0].value == "Physician") {
               output = `<table id = 'results-table' class='tablesorter tablesorter-blue'>
               <thead>
@@ -46,7 +50,7 @@ var ModSearchResults = (function () {
                 </tr>
               </thead>`
             }
-
+            //Poulate the table for each row.
             $("row", data).each(function () {
               if ($("#search-form").serializeArray()[0].value == "Physician") {
                 output += `<tr id = 'orgRow' rel="modal:open" href="#divTabs" class="disabled">
@@ -70,6 +74,7 @@ var ModSearchResults = (function () {
                             <td>${$("zip", this).text()}</td>
                           </tr>`
               } else {
+                //Add the row data to each of the fields
                 output += `<tr id = 'orgRow' rel="modal:open" href="#divTabs" class="disabled">
                 <td>${$(this)
                     .find("type")

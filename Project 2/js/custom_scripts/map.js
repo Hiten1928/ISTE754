@@ -1,3 +1,4 @@
+//Populate the map based on the latitude and longitude of coming from the data
 var ModMap = (function () {
   return {
     populateMap: function (lat, longi) {
@@ -9,6 +10,7 @@ var ModMap = (function () {
           '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
       }).addTo(map)
 
+      //Get the marker and populate the map and add it to the div.
       L.marker([lat, longi])
         .addTo(map)
         .bindPopup("Here")

@@ -1,7 +1,7 @@
 //AJAX call from the
 const proxy = "https://people.rit.edu/dmgics/754/23/proxy.php"
 
-//The tabs function
+//Get the organizations types on the page load. Module for the document.ready event listener
 var ModOrgTypes = (function () {
   return {
     getOrgtypes: function () {
@@ -18,7 +18,7 @@ var ModOrgTypes = (function () {
           if ($(data).find("error").length !== 0) {
             //if there is an error
           } else {
-            opts += "<option value=''>All Organization types</option>"
+            opts += "<option value='' selected='selected' disabled>All Organization types</option>"
             $("row", data).each(function () {
               opts +=
                 "<option value='" +

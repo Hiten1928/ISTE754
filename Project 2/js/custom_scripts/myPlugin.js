@@ -1,4 +1,6 @@
-jQuery.getInfo = function(orgID, tabName) {
+
+//Funcitionality to perform the ajax call for the tabs.
+jQuery.getInfo = function (orgID, tabName) {
   return $.ajax({
     type: "GET",
     async: true,

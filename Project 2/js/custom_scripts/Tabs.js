@@ -1,3 +1,6 @@
+
+//Module to populate the tabs with the data after a certain entry in the searched table
+//is returned
 var modTabs = (function () {
   "use strict"
   return {
@@ -17,6 +20,7 @@ var modTabs = (function () {
               //Creating wrapper div
               output += `<i class="close positive icon" style="color:white"></i><div role=${id} id=tabs><ul id=tabsUL>`
               $("row", data).each(function () {
+
                 //Creating tabs list
                 output += `<li class="ui approve"><a href='#${$(
                   "Tab",
@@ -25,16 +29,21 @@ var modTabs = (function () {
               })
               output += "</ul>"
               $("row", data).each(function () {
+
                 //Creating placeholder text
                 output += `<div id='${$(
                   "Tab",
                   this
-                ).text()}'  class="field"></div>`
+                ).text()}'  class="field container"></div>`
               })
               output += "</div>"
             }
+
+            //Append the html to the DOM and also set the tabs
             $("#divTabs").html(output)
             $("#divTabs [id=tabs]").tabs()
+
+            //Set the display to modal and allow close only by the button
             $("#divTabs")
               .modal({
                 className: {

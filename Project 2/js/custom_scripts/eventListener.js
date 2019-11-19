@@ -3,6 +3,8 @@
 var ModEventlisten = (function () {
   "use strict"
 
+  //The event listeners for the tab population
+  //And the AJAX calls for the tabs
   return {
     tabListener: function () {
       $("#divTabs").on(
@@ -13,48 +15,56 @@ var ModEventlisten = (function () {
             .find("#tabs")
             .attr("role")
           switch ($(this).text()) {
+            //General tab ajax call            
             case "General":
               let promise = $.getInfo(id, $(this).text())
               promise.success(function (data) {
                 ModDetail.getGeneralInfo(data, "General")
               })
               break
+            //Locations tab ajax call            
             case "Locations":
               let promiseLoc = $.getInfo(id, $(this).text())
               promiseLoc.success(function (data) {
                 ModDetail.getLocationInfo(data, "Locations")
               })
               break
+            //People tab ajax call
             case "People":
               let promisePeople = $.getInfo(id, $(this).text())
               promisePeople.success(function (data) {
                 ModDetail.getPeopleInfo(data, "People")
               })
               break
+            //Treatment tab ajax call
             case "Treatment":
               let promiseTreatment = $.getInfo(id, "Treatments")
               promiseTreatment.success(function (data) {
                 ModDetail.getTreatmentInfo(data, "Treatment")
               })
               break
+            //Training tab ajax call
             case "Training":
               let promiseTraining = $.getInfo(id, "Training")
               promiseTraining.success(function (data) {
                 ModDetail.getTrainingInfo(data, "Training")
               })
               break
+            //Facilities tab ajax call
             case "Facilities":
               let promiseFacilities = $.getInfo(id, "Facilities")
               promiseFacilities.success(function (data) {
                 ModDetail.getFacilitiesInfo(data, "Facilities")
               })
               break
+            //Equipment tab ajax call
             case "Equipment":
               let promiseEquipment = $.getInfo(id, "Equipment")
               promiseEquipment.success(function (data) {
                 ModDetail.getEquipmentInfo(data, "Equipment")
               })
               break
+            //Physicians tab ajax call
             case "Physicians":
               let promisePhysicians = $.getInfo(id, "Physicians")
               promisePhysicians.success(function (data) {
@@ -67,6 +77,7 @@ var ModEventlisten = (function () {
       )
     },
 
+    //Event listener for the counties based on the state selected
     getCounty: function () {
       $("#state").on("change", function (event) {
         $.ajax({
@@ -80,6 +91,7 @@ var ModEventlisten = (function () {
                 .children("option:selected")
                 .val()
           },
+          //On success of the ajax call to the server and counties are returned
           success: function (data) {
             let options = `<option value='' selected="selected" disabled>All Counties</option>`
             $("row", data).each(function () {

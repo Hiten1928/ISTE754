@@ -1,3 +1,6 @@
+//Module for populate data inside the each tab
+//These functions are called when the event listener is fired up
+
 var ModDetail = (function () {
   "use strict"
 
@@ -5,6 +8,7 @@ var ModDetail = (function () {
     // -------- Populate General Tab -----------
     getGeneralInfo: function (data, tabId) {
       let text = ``
+      //checking the values are null or not
       if ($("name", data).text() !== "null" || $("name", data).text() !== "") {
         text += `<p><strong>Name:  </strong>${$("name", data).text()}</p>`
       }
@@ -61,6 +65,7 @@ var ModDetail = (function () {
 
     // -------- Populate Location Tab -----------
 
+    //Generate a select menu based on the number of locations listed
     getLocationInfo: function (data, tabId) {
       let text = `<select id='${tabId}Select' class="ui approve fluid dropdown"> Location: 
       <option>Select Location</option>`
@@ -80,6 +85,7 @@ var ModDetail = (function () {
     // -------- Populate People Tab -----------
 
     getPeopleInfo: function (data, tabId) {
+      //Select menu for the people for their respective locations
       console.log(data)
       let text = `<select id='${tabId}Select' class="ui approve fluid dropdown"> Location: 
     <option>Select Location</option>`
@@ -97,6 +103,7 @@ var ModDetail = (function () {
 
     // -------- Populate Treatment Tab -----------
 
+    //The treatment population in the form of a table
     getTreatmentInfo: function (data, tabId) {
       let text = `<table id='trainTable' class='ui celled padded table'><thead><tr><th class="single line">Type</th><th>Abbreviation</th></tr></thead>`
       $("treatment", data).each(function () {
@@ -111,6 +118,7 @@ var ModDetail = (function () {
 
     // -------- Populate Training Tab -----------
 
+    //The training info for the selected service in the form of a table
     getTrainingInfo: function (data, tabId) {
       let text = `<table id='trainTable' class='ui celled padded table'><tr><thead><th class="single line">Type</th><th>Abbreviation</th></thead>`
       $("training", data).each(function () {
@@ -125,6 +133,7 @@ var ModDetail = (function () {
 
     // -------- Populate Facilities Tab -----------
 
+    //Populate the facilities information based on the data that has been populated
     getFacilitiesInfo: function (data, tabId) {
       let text = `<table id='facilityTable' class='ui celled padded table'><tr><thead><th class="single line">Name</th><th>Quantity</th><th>Description</th></thead>`
       $("facility", data).each(function () {
@@ -155,6 +164,7 @@ var ModDetail = (function () {
 
     // -------- Populate Equipment Tab -----------
 
+    //The names of the physicians and their respective hospital for the resective selection
     getPhysiciansInfo: function (data, tabId) {
       let text = `<table id='physicianTable' class='ui celled padded table'><tr><thead><th class="single line">Name</th><th>License</th><th>Phone</th></thead>`
       $("physician", data).each(function () {
