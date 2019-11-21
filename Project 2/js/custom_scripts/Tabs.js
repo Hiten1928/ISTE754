@@ -18,7 +18,7 @@ var modTabs = (function () {
               output = "No tabs found"
             } else {
               //Creating wrapper div
-              output += `<i class="close positive icon" style="color:white"></i><div role=${id} id=tabs><ul id=tabsUL>`
+              output += `<i class="close positive icon" style="color:white"></i><div myID=${id} id=tabs><ul id=tabsUL>`
               $("row", data).each(function () {
 
                 //Creating tabs list

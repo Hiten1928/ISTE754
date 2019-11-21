@@ -13,60 +13,60 @@ var ModEventlisten = (function () {
         function () {
           let id = $("#divTabs")
             .find("#tabs")
-            .attr("role")
+            .attr("myid")
           switch ($(this).text()) {
             //General tab ajax call            
             case "General":
-              let promise = $.getInfo(id, $(this).text())
+              let promise = $(this).getInfo({ orgID: id, tabName: $(this).text() })
               promise.success(function (data) {
                 ModDetail.getGeneralInfo(data, "General")
               })
               break
             //Locations tab ajax call            
             case "Locations":
-              let promiseLoc = $.getInfo(id, $(this).text())
+              let promiseLoc = $(this).getInfo({ orgID: id, tabName: $(this).text() })
               promiseLoc.success(function (data) {
                 ModDetail.getLocationInfo(data, "Locations")
               })
               break
             //People tab ajax call
             case "People":
-              let promisePeople = $.getInfo(id, $(this).text())
+              let promisePeople = $(this).getInfo({ orgID: id, tabName: $(this).text() })
               promisePeople.success(function (data) {
                 ModDetail.getPeopleInfo(data, "People")
               })
               break
             //Treatment tab ajax call
             case "Treatment":
-              let promiseTreatment = $.getInfo(id, "Treatments")
+              let promiseTreatment = $(this).getInfo({ orgID: id, tabName: 'Treatments' })
               promiseTreatment.success(function (data) {
                 ModDetail.getTreatmentInfo(data, "Treatment")
               })
               break
             //Training tab ajax call
             case "Training":
-              let promiseTraining = $.getInfo(id, "Training")
+              let promiseTraining = $(this).getInfo({ orgID: id, tabName: $(this).text() })
               promiseTraining.success(function (data) {
                 ModDetail.getTrainingInfo(data, "Training")
               })
               break
             //Facilities tab ajax call
             case "Facilities":
-              let promiseFacilities = $.getInfo(id, "Facilities")
+              let promiseFacilities = $(this).getInfo({ orgID: id, tabName: $(this).text() })
               promiseFacilities.success(function (data) {
                 ModDetail.getFacilitiesInfo(data, "Facilities")
               })
               break
             //Equipment tab ajax call
             case "Equipment":
-              let promiseEquipment = $.getInfo(id, "Equipment")
+              let promiseEquipment = $(this).getInfo({ orgID: id, tabName: $(this).text() })
               promiseEquipment.success(function (data) {
                 ModDetail.getEquipmentInfo(data, "Equipment")
               })
               break
             //Physicians tab ajax call
             case "Physicians":
-              let promisePhysicians = $.getInfo(id, "Physicians")
+              let promisePhysicians = $(this).getInfo({ orgID: id, tabName: $(this).text() })
               promisePhysicians.success(function (data) {
                 ModDetail.getPhysiciansInfo(data, "Physicians")
               })
@@ -130,10 +130,6 @@ var ModEventlisten = (function () {
                 this
               ).text()}</option>`
             })
-            console.log(options)
-            // if ($("#cities").length > 2) {
-
-            // }
             $("#cities").empty()
             $("#cities").append(options)
           }
@@ -159,6 +155,7 @@ var ModEventlisten = (function () {
                 locData = $(this)
               }
             })
+            //Prepare the text for the html to be appended
             text += `<tr>
           <td>${$("address1", locData).text()} ${$(
               "address2",
@@ -178,11 +175,41 @@ var ModEventlisten = (function () {
               $("#divTabs [id=tabs] [id=Locations] #map").remove()
               $("#locTable").remove()
             }
+
             $("#divTabs [id=tabs] [id=Locations]").append(text)
-            ModMap.populateMap(
-              $("latitude", locData).text(),
-              $("longitude", locData).text()
-            )
+
+            //-------------Check if the latitude and longitude are null or not----------
+
+            if ($("latitude", locData).text() !== 'null' &&
+              $("longitude", locData).text() !== 'null') {
+              ModMap.populateMap(
+                $("latitude", locData).text(),
+                $("longitude", locData).text()
+              )
+            } else {
+              //-----------Ajax call if  the latitude and longitude are null--------------
+              $.ajax({
+                url: "http://www.mapquestapi.com/geocoding/v1/address?key=hNerhAshAUfPp8Jplubd3WjhSHqUbycN",
+                dataType: 'json',
+                type: 'POST',
+                contentType: 'json',
+                data: {
+
+                  location: `${$("address1", locData).text()} ${$(
+                    "address2",
+                    locData
+                  ).text()} ${$("city", locData).text()} ${$("state", locData).text()} ${$("zip", locData).text()}`
+                  , options: { thumbMaps: false }
+                },
+                success: function (data) {
+                  ModMap.populateMap(
+                    data.results[0].locations[0].latLng.lat,
+                    data.results[0].locations[0].latLng.lng
+                  )
+                  console.log(data.results[0].locations[0].latLng)
+                }
+              });
+            }
           } else {
             $("#divTabs [id=tabs] [id=Locations] #map").remove()
             $("#locTable").remove()
@@ -203,6 +230,8 @@ var ModEventlisten = (function () {
             .children("option:selected")
             .attr("site")
           let peepData = {}
+
+          //Get the selected menu from the data
           $("site", data).each(function () {
             if ($(this).attr("siteId") === currSelection) {
               peepData = $(this)

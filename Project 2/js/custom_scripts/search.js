@@ -1,8 +1,10 @@
 
 //Module for populating the initial table based on the search form
 var ModSearchResults = (function () {
+
   return {
     checkSearch: function () {
+      console.log($("#search-form").serialize())
       $.ajax({
         url: proxy,
         data: {

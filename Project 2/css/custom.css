@@ -51,14 +51,14 @@
 .jumbotron {
   flex: 1 100%;
   text-align: center;
-  width: 100%;
+  width: auto;
   height: auto;
   padding: 2% !important;
   position: relative;
   text-overflow: clip;
   border-radius: 0 0 85% 85% / 0%;
   font-weight: normal;
-  font-size: 3em;
+  font-size: 1.5em;
   color: black;
   font-family: "Josefin Sans", sans-serif;
   background-attachment: fixed;
@@ -95,8 +95,8 @@ form {
 }
 
 .container {
-  display: flex;
-  justify-content: center;
+  display: flex !important;
+  justify-content: center !important;
   min-width: 91%;
 }
 /* clearfix */
@@ -126,4 +126,8 @@ form {
 .last-row,
 .last-row ~ .item {
   margin-bottom: 0;
+}
+
+.card{
+  font-size: 1.5em;
 }
