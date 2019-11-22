@@ -7,7 +7,7 @@ var ModDetail = (function () {
   return {
     // -------- Populate General Tab -----------
     getGeneralInfo: function (data, tabId) {
-      let text = `<div class='ui card'><div class='content'>`
+      let text = ``
       //checking the values are null or not
       if ($("name", data).text() !== "null" || $("name", data).text() !== "") {
         text += `<p><strong>Name:  </strong>${$("name", data).text()}</p>`
@@ -55,7 +55,7 @@ var ModDetail = (function () {
         text += `<p><strong>Number of Calls:  </strong>${$(
           "numcalls",
           data
-        ).text()}</p></div></div>`
+        ).text()}</p>`
       }
 
       if ($($("#" + tabId)).children().length < 1) {
@@ -246,6 +246,7 @@ var ModDetail = (function () {
         </div>
       </div>`
       }
+
       if ($($("#" + tabId)).children().length < 1) {
         $($("#" + tabId)).append(text)
       }

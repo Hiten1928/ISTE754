@@ -225,7 +225,7 @@ var ModEventlisten = (function () {
       $("#divTabs [id=tabs] [id=People] [id=PeopleSelect").on(
         "change",
         function () {
-          let text = `<table id='peopleTable' class='ui celled padded table'><tr><thead><th>Name</th><th>Role</th></thead>`
+          let text = `<table id='peopleTable' class='ui celled padded table'><tr><thead><th>Name</th><th>Role</th></thead></tr>`
           let currSelection = $(this)
             .children("option:selected")
             .attr("site")
@@ -241,11 +241,11 @@ var ModEventlisten = (function () {
           $("person", peepData).size()
 
           $("person", peepData).each(function () {
-            text += `<td>${$("honorific", this).text()}. ${$(
+            text += `<tr><td>${$("honorific", this).text()}. ${$(
               "fName",
               this
             ).text()} ${$("lName", this).text()}</td>
-        <td>${$("role", this).text()}</td>`
+        <td>${$("role", this).text()}</td></tr>`
           })
 
           text += `</table>`

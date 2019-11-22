@@ -51,7 +51,7 @@
 .jumbotron {
   flex: 1 100%;
   text-align: center;
-  width: auto;
+  width: 100%;
   height: auto;
   padding: 2% !important;
   position: relative;
@@ -95,8 +95,8 @@ form {
 }
 
 .container {
-  display: flex !important;
-  justify-content: center !important;
+  display: flex;
+  justify-content: center;
   min-width: 91%;
 }
 /* clearfix */
@@ -126,8 +126,4 @@ form {
 .last-row,
 .last-row ~ .item {
   margin-bottom: 0;
-}
-
-.card{
-  font-size: 1.5em;
 }
