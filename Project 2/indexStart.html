@@ -48,22 +48,22 @@
 </div>
 <div class="container">
   <div class="item first-item">
-    <img src="img/1.jpeg" width="300" height="200" />
+    <img src="img/1.jpeg" width="200" height="130" />
   </div>
   <div class="item">
-    <img src="img/2.jpeg" width="300" height="200" />
+    <img src="img/2.jpeg" width="200" height="130" />
   </div>
   <div class="item">
-    <img src="img/3.jpeg" width="300" height="200" />
+    <img src="img/3.jpeg" width="200" height="130" />
   </div>
   <div class="item">
-    <img src="img/4.jpeg" width="300" height="200" />
+    <img src="img/4.jpeg" width="200" height="130" />
   </div>
   <div class="item">
-    <img src="img/5.jpeg" width="300" height="200" />
+    <img src="img/5.jpeg" width="200" height="130" />
   </div>
   <div class="item">
-    <img src="img/6.jpeg" width="300" height="200" />
+    <img src="img/6.jpeg" width="200" height="130" />
   </div>
 </div>
 
@@ -76,7 +76,7 @@
       </div>
       <div class='field'>
         <h4 class="ui dividing header">Organization Name</h4>
-        <input name='org' id="orgName" type="text" class="ui input">
+        <input name='name' id="orgName" type="text" class="ui input">
         <em style="color: rgb(104, 129, 162);">*can be partial - "vol" for "Volunteer"</em>
       </div>
     </div>
@@ -86,9 +86,7 @@
       <h4 class="ui dividing header">State</h4>
       <select id="state" onchange="" name='state' class="ui fluid dropdown">
         <!-- <select id="state" name='state' class="chosen-select"> -->
-        <option value="">
-          All States
-        </option>
+        <option selected="selected" disabled>Choose State</option>
         <option value="AK">AK</option>
         <option value="AL">AL</option>
         <option value="AR">AR</option>
@@ -123,7 +121,7 @@
         <option value="NJ">NJ</option>
         <option value="NM">NM</option>
         <option value="NV">NV</option>
-        <option value="NY" selected="selected">NY</option>
+        <option value="NY">NY</option>
         <option value="OH">OH</option>
         <option value="OK">OK</option>
         <option value="OR">OR</option>
@@ -150,7 +148,7 @@
       </div>
       <div class="field">
         <h4 class="ui dividing header">City</h4>
-        <select id='cities' name="city" class="ui fluid dropdown">
+        <select id='cities' name="town" class="ui fluid dropdown">
         </select>
       </div>
       <div class="field">
@@ -161,7 +159,8 @@
 
 
     <div class="field">
-      <input value="Show Results" onclick="checkSearch()" id="btnSearch" class="ui primary basic button" type="button">
+      <input value="Show Results" onclick="ModSearchResults.checkSearch()" id="btnSearch"
+        class="ui primary basic button" type="button">
       <input type="reset" class="ui basic button" value="Reset Form" style="float: right;">
     </div>
   </fieldset>
@@ -172,8 +171,6 @@
 <script src="js/dist/autosize.js" type="text/javascript"></script>
 <script src="js/rowGrid/jquery.row-grid.js" type="text/javascript"></script>
 <script src="js/rowGrid/jquery.row-grid.js" type="text/javascript"></script>
-<script src="js/chosen_v1.8.7/chosen.jquery.js" type="text/javascript"></script>
-<script src="js/chosen_v1.8.7/chosen.jquery.min.js" type="text/javascript"></script>
 <script src="js/dist/autosize.min.js" type="text/javascript"></script>
 <script src="js/custom_scripts/search.js" type="text/javascript"></script>
 <script src="js/custom_scripts/Tabs.js" type="text/javascript"></script>

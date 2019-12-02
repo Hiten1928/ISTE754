@@ -1,81 +1,85 @@
 //Event Listener on tabs
 
-var ModTabListen = (function() {
+var ModEventlisten = (function () {
   "use strict"
 
+  //The event listeners for the tab population
+  //And the AJAX calls for the tabs
   return {
-    tabListener: function() {
+    tabListener: function () {
       $("#divTabs").on(
         "click",
         "#tabs [role=tablist] [role=tab] a",
-        function() {
+        function () {
           let id = $("#divTabs")
             .find("#tabs")
-            .attr("role")
+            .attr("myid")
           switch ($(this).text()) {
+            //General tab ajax call            
             case "General":
-              let promise = $.getInfo(id, $(this).text())
-              promise.success(function(data) {
-                ModGeneral.getGeneralInfo(data, "General")
+              let promise = $(this).getInfo({ orgID: id, tabName: $(this).text() })
+              promise.success(function (data) {
+                ModDetail.getGeneralInfo(data, "General")
               })
               break
+            //Locations tab ajax call            
             case "Locations":
-              let promiseLoc = $.getInfo(id, $(this).text())
-              promiseLoc.success(function(data) {
-                ModLocation.getLocationInfo(data, "Locations")
+              let promiseLoc = $(this).getInfo({ orgID: id, tabName: $(this).text() })
+              promiseLoc.success(function (data) {
+                ModDetail.getLocationInfo(data, "Locations")
               })
               break
+            //People tab ajax call
             case "People":
-              let promisePeople = $.getInfo(id, $(this).text())
-              promisePeople.success(function(data) {
-                ModPeople.getPeopleInfo(data, "People")
+              let promisePeople = $(this).getInfo({ orgID: id, tabName: $(this).text() })
+              promisePeople.success(function (data) {
+                ModDetail.getPeopleInfo(data, "People")
               })
               break
+            //Treatment tab ajax call
             case "Treatment":
-              let promiseTreatment = $.getInfo(id, "Treatments")
-              promiseTreatment.success(function(data) {
-                ModTreatment.getTreatmentInfo(data, "Treatment")
+              let promiseTreatment = $(this).getInfo({ orgID: id, tabName: 'Treatments' })
+              promiseTreatment.success(function (data) {
+                ModDetail.getTreatmentInfo(data, "Treatment")
               })
               break
+            //Training tab ajax call
             case "Training":
-              let promiseTraining = $.getInfo(id, "Training")
-              promiseTraining.success(function(data) {
-                ModTraining.getTrainingInfo(data, "Training")
+              let promiseTraining = $(this).getInfo({ orgID: id, tabName: $(this).text() })
+              promiseTraining.success(function (data) {
+                ModDetail.getTrainingInfo(data, "Training")
               })
               break
+            //Facilities tab ajax call
             case "Facilities":
-              let promiseFacilities = $.getInfo(id, "Facilities")
-              promiseFacilities.success(function(data) {
-                ModFacilities.getFacilitiesInfo(data, "Facilities")
+              let promiseFacilities = $(this).getInfo({ orgID: id, tabName: $(this).text() })
+              promiseFacilities.success(function (data) {
+                ModDetail.getFacilitiesInfo(data, "Facilities")
               })
               break
+            //Equipment tab ajax call
             case "Equipment":
-              let promiseEquipment = $.getInfo(id, "Equipment")
-              promiseEquipment.success(function(data) {
-                ModEquip.getEquipmentInfo(data, "Equipment")
+              let promiseEquipment = $(this).getInfo({ orgID: id, tabName: $(this).text() })
+              promiseEquipment.success(function (data) {
+                ModDetail.getEquipmentInfo(data, "Equipment")
               })
               break
+            //Physicians tab ajax call
             case "Physicians":
-              let promisePhysicians = $.getInfo(id, "Physicians")
-              promisePhysicians.success(function(data) {
-                ModPhysicians.getPhysiciansInfo(data, "Physicians")
+              let promisePhysicians = $(this).getInfo({ orgID: id, tabName: $(this).text() })
+              promisePhysicians.success(function (data) {
+                ModDetail.getPhysiciansInfo(data, "Physicians")
               })
               break
           }
           return false
         }
       )
-    }
-  }
-})()
+    },
 
-// ------------- Populate state based on the county ------------
-
-var ModCounty = (function() {
-  "use strict"
-  return {
-    getCounty: function() {
-      $("#state").on("change", function(event) {
+    //Event listener for the counties based on the state selected
+    getCounty: function () {
+      $("#state").on("change", function (event) {
         $.ajax({
           type: "GET",
           async: true,
@@ -87,9 +91,10 @@ var ModCounty = (function() {
                 .children("option:selected")
                 .val()
           },
-          success: function(data) {
-            let options = `<option value=''>All Counties</option>`
-            $("row", data).each(function() {
+          //On success of the ajax call to the server and counties are returned
+          success: function (data) {
+            let options = `<option value='' selected="selected" disabled>All Counties</option>`
+            $("row", data).each(function () {
               options += `<option value='${$("CountyName", this).text()}'>${$(
                 "CountyName",
                 this
@@ -100,18 +105,12 @@ var ModCounty = (function() {
           }
         })
       })
-    }
-  }
-})()
+    },
 
-// ------------- Populate the cities on the basis of state ------------
+    // ------------- Populate state based on the county ------------
 
-var ModCities = (function() {
-  "use strict"
-
-  return {
-    getCities: function() {
-      $("#state").on("change", function(event) {
+    getCities: function () {
+      $("#state").on("change", function (event) {
         $.ajax({
           type: "GET",
           async: true,
@@ -123,34 +122,27 @@ var ModCities = (function() {
                 .children("option:selected")
                 .val()
           },
-          success: function(data) {
-            let options = `<option value=''>All Cities</option>`
-            $("row", data).each(function() {
+          success: function (data) {
+            let options = `<option value='' selected="selected" disabled>All Cities</option>`
+            $("row", data).each(function () {
               options += `<option value='${$("city", this).text()}'>${$(
                 "city",
                 this
               ).text()}</option>`
             })
-            console.log(options)
-            // if ($("#cities").length > 2) {
-
-            // }
             $("#cities").empty()
             $("#cities").append(options)
           }
         })
       })
-    }
-  }
-})()
+    },
 
-// ------------------ Event Listener for Location --------------
-var ModLocationSelect = (function() {
-  return {
-    locationSelect: function(data) {
+    // ------------------ Event Listener for Location --------------
+
+    locationSelect: function (data) {
       $("#divTabs [id=tabs] [id=Locations] [id=LocationsSelect").on(
         "change",
-        function(event) {
+        function (event) {
           if (event.target.value !== "Select Location") {
             let text = `<table id='locTable' class='ui celled padded table'><tr><thead><th>Address</th><th>State</th><th>City</th><th>County</th><th>Zip</th><th>Phone</th><th>Fax</th><th>Latitude</th><th>Longitude</th></thead>`
             let locData = {}
@@ -158,35 +150,66 @@ var ModLocationSelect = (function() {
               .children("option:selected")
               .attr("site")
 
-            $("location", data).each(function() {
+            $("location", data).each(function () {
               if ($("siteId", this).text() === currLocation) {
                 locData = $(this)
               }
             })
+            //Prepare the text for the html to be appended
             text += `<tr>
-            <td>${$("address1", locData).text()} ${$(
+          <td>${$("address1", locData).text()} ${$(
               "address2",
               locData
             ).text()}</td>
-            <td>${$("state", locData).text()}</td>
-            <td>${$("city", locData).text()}</td>
-            <td>${$("countyName", locData).text()}</td>
-            <td>${$("zip", locData).text()}</td>
-            <td>${$("phone", locData).text()}</td>
-            <td>${$("fax", locData).text()}</td>
-            <td>${$("latitude", locData).text()}</td>
-            <td>${$("longitude", locData).text()}</td>
-                    </tr>`
+          <td>${$("state", locData).text()}</td>
+          <td>${$("city", locData).text()}</td>
+          <td>${$("countyName", locData).text()}</td>
+          <td>${$("zip", locData).text()}</td>
+          <td>${$("phone", locData).text()}</td>
+          <td>${$("fax", locData).text()}</td>
+          <td>${$("latitude", locData).text()}</td>
+          <td>${$("longitude", locData).text()}</td>
+                  </tr>`
             text += `</table><div id='map' class=''></div>`
             if ($("#locTable", this)) {
               $("#divTabs [id=tabs] [id=Locations] #map").remove()
               $("#locTable").remove()
             }
+
             $("#divTabs [id=tabs] [id=Locations]").append(text)
-            ModMap.populateMap(
-              $("latitude", locData).text(),
-              $("longitude", locData).text()
-            )
+
+            //-------------Check if the latitude and longitude are null or not----------
+
+            if ($("latitude", locData).text() !== 'null' &&
+              $("longitude", locData).text() !== 'null') {
+              ModMap.populateMap(
+                $("latitude", locData).text(),
+                $("longitude", locData).text()
+              )
+            } else {
+              //-----------Ajax call if  the latitude and longitude are null--------------
+              $.ajax({
+                url: "http://www.mapquestapi.com/geocoding/v1/address?key=hNerhAshAUfPp8Jplubd3WjhSHqUbycN",
+                dataType: 'json',
+                type: 'POST',
+                contentType: 'json',
+                data: {
+
+                  location: `${$("address1", locData).text()} ${$(
+                    "address2",
+                    locData
+                  ).text()} ${$("city", locData).text()} ${$("state", locData).text()} ${$("zip", locData).text()}`
+                  , options: { thumbMaps: false }
+                },
+                success: function (data) {
+                  ModMap.populateMap(
+                    data.results[0].locations[0].latLng.lat,
+                    data.results[0].locations[0].latLng.lng
+                  )
+                  console.log(data.results[0].locations[0].latLng)
+                }
+              });
+            }
           } else {
             $("#divTabs [id=tabs] [id=Locations] #map").remove()
             $("#locTable").remove()
@@ -194,24 +217,22 @@ var ModLocationSelect = (function() {
           return false
         }
       )
-    }
-  }
-})()
+    },
 
-// -------------------- Details of the specific Training ---------
+    // -------------------- Details of the specific Training ---------
 
-var ModPeopleSelect = (function() {
-  return {
-    peopleSelect: function(data) {
+    peopleSelect: function (data) {
       $("#divTabs [id=tabs] [id=People] [id=PeopleSelect").on(
         "change",
-        function() {
-          let text = `<table id='peopleTable' class='ui celled padded table'><tr><thead><th>Name</th><th>Role</th></thead>`
+        function () {
+          let text = `<table id='peopleTable' class='ui celled padded table'><tr><thead><th>Name</th><th>Role</th></thead></tr>`
           let currSelection = $(this)
             .children("option:selected")
             .attr("site")
           let peepData = {}
-          $("site", data).each(function() {
+
+          //Get the selected menu from the data
+          $("site", data).each(function () {
             if ($(this).attr("siteId") === currSelection) {
               peepData = $(this)
             }
@@ -219,12 +240,12 @@ var ModPeopleSelect = (function() {
 
           $("person", peepData).size()
 
-          $("person", peepData).each(function() {
-            text += `<td>${$("honorific", this).text()}. ${$(
+          $("person", peepData).each(function () {
+            text += `<tr><td>${$("honorific", this).text()}. ${$(
               "fName",
               this
             ).text()} ${$("lName", this).text()}</td>
-          <td>${$("role", this).text()}</td>`
+        <td>${$("role", this).text()}</td></tr>`
           })
 
           text += `</table>`
@@ -237,4 +258,4 @@ var ModPeopleSelect = (function() {
       )
     }
   }
-})()
+}())
